@@ -12,9 +12,9 @@ header {
     justify-content: center;
     color: var(--accent2-color);
     font-size: 2rem;
-    position: absolute;
-    right: 2rem;
-    top: 5.5%;
+    position: relative;
+    left: 100%;
+    top: 20.5%;
     transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
     -moz-transform: translateY(-50%);
@@ -175,10 +175,10 @@ li.move-right1 {
 
 @media screen and (max-width: 990px) {
     .nav-list {
-        position: fixed;
+        position: absolute;
         top: 90px;
         left: 0;
-        height: 100vh;
+        height: 100%;
         flex-direction: column;
         background-color: var(--nav-color);
         z-index: 1000;
@@ -266,6 +266,15 @@ li.move-right1 {
         text-align: center;
         align-self: center;
     }
+}
+
+@media screen and (max-width: 300px) {
+    nav {
+        padding-left:  20px;
+        display: flex !important;
+        justify-content: center !important;
+    }
+    
 }
 
 .button-fix {

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 export const Nav = () => {
     const [isActive, setIsActive] = useState(false);
-    const [isLoggedIn, setIsLoggedIn] = useState(true);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     const toggleMenu = () => {
         setIsActive(!isActive);
@@ -86,7 +86,7 @@ export const Nav = () => {
                         {!isLoggedIn && (
                             <Link
                                 className="move-right2 btn"
-                                to="/"
+                                to="/signin"
                                 style={{
                                     display: "flex",
                                     justifyContent: "center",

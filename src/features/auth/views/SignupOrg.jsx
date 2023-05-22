@@ -1,7 +1,7 @@
 import React from "react";
-import { SignupForm } from "../components";
+import { SignupFormOrg } from "../components";
 
-export const Signup = () => {
+export const SignupOrg = () => {
     return (
         <div
             className="SignupForm-vol"
@@ -15,10 +15,10 @@ export const Signup = () => {
             }}
         >
             <h1 className="createVol-h1" style={{ fontSize: "32px" }}>
-                Create a CodeBro account
+                Create a CodeBros account
             </h1>
             <div className="SignupForm-vol-inp">
-                <SignupForm />
+                <SignupFormOrg />
             </div>
         </div>
     );

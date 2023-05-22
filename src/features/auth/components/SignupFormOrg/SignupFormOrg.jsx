@@ -1,11 +1,11 @@
 import { Button, Form, Col, Input, Row, Tooltip, Select } from "antd";
-import "./SignupForm.css";
+import "./SignupFormOrg.css";
 
 const { Item } = Form;
 const { Password } = Input;
 const { Option } = Select;
 
-export const SignupForm = () => {
+export const SignupFormOrg = () => {
     const [form] = Form.useForm();
     const handleSubmit = (values) => {
         console.log(values);
