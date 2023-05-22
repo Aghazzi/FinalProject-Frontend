@@ -298,6 +298,16 @@ li.move-right1 {
     color: var(--accent-color) !important;
 }
 
+.move-right3 {
+    border-color: var(--accent2-color) !important;
+    color: var(--accent-color) !important;
+    background-color: var(--accent2-color);
+}
+
+.move-right3:hover {
+    opacity: 0.9;
+}
+
 .right-nav {
     display: flex;
     align-items: center;

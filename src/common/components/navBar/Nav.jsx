@@ -82,46 +82,46 @@ export const Nav = () => {
                             <a href="#">Contact</a>
                         </li>
                     </div>
-                    <div className="button-fix" >
-                            {!isLoggedIn && (
-                                <Link
+                    <div className="button-fix">
+                        {!isLoggedIn && (
+                            <Link
                                 className="move-right2 btn"
-                                    to="/"
-                                    style={{
-                                        display: "flex",
-                                        justifyContent: "center",
-                                        alignItems: "center",
-                                    }}
-                                >
-                                    SIGN IN
-                                </Link>
-                            )}
-                            {!isLoggedIn && (
-                                <Link className="move-right1 btn"
-                                    to="/signupcard"
-                                    style={{
-                                        display: "flex",
-                                        justifyContent: "center",
-                                        alignItems: "center",
-                                    }}
-                                >
-                                    JOIN
-                                </Link>
-                            )}
+                                to="/"
+                                style={{
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    alignItems: "center",
+                                }}
+                            >
+                                SIGN IN
+                            </Link>
+                        )}
+                        {!isLoggedIn && (
+                            <Link
+                                className="move-right1 btn"
+                                to="/signupcard"
+                                style={{
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    alignItems: "center",
+                                }}
+                            >
+                                JOIN
+                            </Link>
+                        )}
                         {isLoggedIn && (
-                            <div className="move-right btn">
-                                <Link
-                                    // className="logout"
-                                    onClick={handleLogout}
-                                    style={{
-                                        display: "flex",
-                                        justifyContent: "center",
-                                        alignItems: "center",
-                                    }}
-                                >
-                                    Log Out
-                                </Link>
-                            </div>
+                            <Link
+                                className="move-right3 btn"
+                                onClick={handleLogout}
+                                style={{
+                                    width: "100px",
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    alignItems: "center",
+                                }}
+                            >
+                                Log Out
+                            </Link>
                         )}
                     </div>
                 </ul>
