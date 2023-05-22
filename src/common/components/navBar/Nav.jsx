@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 export const Nav = () => {
     const [isActive, setIsActive] = useState(false);
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(true);
 
     const toggleMenu = () => {
         setIsActive(!isActive);
@@ -82,41 +82,47 @@ export const Nav = () => {
                             <a href="#">Contact</a>
                         </li>
                     </div>
-                    <div className="button-fix">
-                        <ul>
+                    <div className="button-fix" >
                             {!isLoggedIn && (
-                                <li className="move-right btn">
-                                    <Link to="/">
-                                        <button>SIGN IN</button>
-                                    </Link>
-                                </li>
-                            )}
-                            {!isLoggedIn && (
-                                <li className="move-right0 btn">
-                                    <Link to="/signupcard">
-                                        <button>JOIN</button>
-                                    </Link>
-                                </li>
-                            )}
-                            {isLoggedIn && (
-                                <li
-                                    className="move-right1 btn"
+                                <Link
+                                className="move-right2 btn"
+                                    to="/"
                                     style={{
                                         display: "flex",
                                         justifyContent: "center",
                                         alignItems: "center",
-                                        right: "40px",
                                     }}
                                 >
-                                    <button
-                                        className="logout"
-                                        onClick={handleLogout}
-                                    >
-                                        Log Out
-                                    </button>
-                                </li>
+                                    SIGN IN
+                                </Link>
                             )}
-                        </ul>
+                            {!isLoggedIn && (
+                                <Link className="move-right1 btn"
+                                    to="/signupcard"
+                                    style={{
+                                        display: "flex",
+                                        justifyContent: "center",
+                                        alignItems: "center",
+                                    }}
+                                >
+                                    JOIN
+                                </Link>
+                            )}
+                        {isLoggedIn && (
+                            <div className="move-right btn">
+                                <Link
+                                    // className="logout"
+                                    onClick={handleLogout}
+                                    style={{
+                                        display: "flex",
+                                        justifyContent: "center",
+                                        alignItems: "center",
+                                    }}
+                                >
+                                    Log Out
+                                </Link>
+                            </div>
+                        )}
                     </div>
                 </ul>
             </nav>

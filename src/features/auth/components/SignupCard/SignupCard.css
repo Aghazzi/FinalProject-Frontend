@@ -15,6 +15,68 @@
     padding: 70px;
 }
 
-@media screen {
-    
+@media screen and (max-width: 990px) {
+    .SignupLanding {
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        padding: 0;
+    }
+
+    .signup-landing {
+        display: flex !important;
+        justify-content: space-evenly !important;
+        height: 100% !important;
+        gap: 30px;
+        padding: 0;
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+
+    .ant-card {
+        width: 370px !important;
+        height: 140px !important;
+        display: flex !important;
+        flex-direction: row-reverse;
+        align-items: center;
+        padding: 0;
+    }
+
+    .ant-card-meta {
+        width: 150px !important;
+    }
+
+    .ant-card-cover img {
+        margin-top: 0 !important;
+        margin-left: 50px !important;
+        margin-right: 30px !important;
+    }
+
+    .card {
+        padding: 0;
+        flex-direction: column;
+        gap: 20px;
+    }
+    .signupLanding-title{
+        gap: 20px;
+        padding: 10px;
+    }
+}
+
+@media screen and (max-width: 290px) {
+    .ant-card {
+        width: 250px !important;
+        height: 100px !important;
+        display: flex !important;
+        flex-direction: row-reverse;
+        align-items: center;
+        padding: 0;
+    }
+
+    .ant-card-cover img {
+        margin-top: 0 !important;
+        margin-left: 0px !important;
+        margin-right: 10px !important;
+        width: 60px !important;
+    }
 }

@@ -57,6 +57,66 @@ export const SignupForm = () => {
                         {/* </Tooltip> */}
                     </Item>
                 </Row>
+                <Row>
+                    <Item
+                        label="Email"
+                        name="email"
+                        rules={[
+                            {
+                                pattern: new RegExp(
+                                    /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+                                ),
+                                message: "Email is invalid",
+                            },
+                            {
+                                required: true,
+                                message: "Email is Required",
+                            },
+                        ]}
+                    >
+                        <Input />
+                    </Item>
+                </Row>
+                <Row>
+                    <Item
+                        label="Email"
+                        name="email"
+                        rules={[
+                            {
+                                pattern: new RegExp(
+                                    /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+                                ),
+                                message: "Email is invalid",
+                            },
+                            {
+                                required: true,
+                                message: "Email is Required",
+                            },
+                        ]}
+                    >
+                        <Input />
+                    </Item>
+                </Row>
+                <Row>
+                    <Item
+                        label="Email"
+                        name="email"
+                        rules={[
+                            {
+                                pattern: new RegExp(
+                                    /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+                                ),
+                                message: "Email is invalid",
+                            },
+                            {
+                                required: true,
+                                message: "Email is Required",
+                            },
+                        ]}
+                    >
+                        <Input />
+                    </Item>
+                </Row>
                 <Button htmlType="submit" type="primary">
                     Submit
                 </Button>

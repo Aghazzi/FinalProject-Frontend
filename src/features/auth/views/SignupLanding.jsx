@@ -6,6 +6,7 @@ export const SignupLanding = () => {
     return (
         <>
             <div
+                className="SignupLanding"
                 style={{
                     display: "flex",
                     flex: "1",
@@ -16,6 +17,7 @@ export const SignupLanding = () => {
                 }}
             >
                 <div
+                    className="signupLanding-title"
                     style={{
                         display: "flex",
                         flexDirection: "column",
@@ -29,9 +31,9 @@ export const SignupLanding = () => {
                     </h2>
                 </div>
                 <div className="signup-landing">
-                    <div>
-                        <h2>which type of account would you like?</h2>
-                    </div>
+                    {/* <div>
+                        <h2>Are you</h2>
+                    </div> */}
                     <div className="card">
                         <Link to="/signupform-vol">
                             <SignupCard
