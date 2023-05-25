@@ -1,0 +1,48 @@
+@media screen and (max-width: 990px) {
+    .stats-container {
+        align-items: flex-start !important;
+    }
+
+    .stats-headers {
+        width: 85% !important;
+    }
+
+    .stats-cards {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 85% !important;
+        gap: 20px;
+    }
+
+    .stats-cards .ant-card {
+        width: 330px !important;
+    }
+    .stats-headers h1 {
+        font-size: 15px !important;
+    }
+
+    .stats-headers h2 {
+        font-size: 13px !important;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    .stats-container {
+        align-items: flex-start !important;
+    }
+
+    .stats-headers {
+        width: 55% !important;
+    }
+
+    .stats-cards {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 65% !important;
+        gap: 20px;
+    }
+
+    .stats-cards .ant-card {
+        width: 220px !important;
+    }
+}

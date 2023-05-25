@@ -1,0 +1,32 @@
+@media screen and (max-width: 990px) {
+    .contact-container {
+        align-items: flex-start !important;
+        text-align: start !important;
+    }
+
+    .contact-headers {
+        width: 85% !important;
+        text-align: center !important;
+    }
+
+    .contact-form .ant-form-vertical .ant-form-item .ant-form-item-control {
+        width: 330px !important;
+    }
+    .contact-headers h1 {
+        font-size: 15px !important;
+    }
+
+    .contact-headers h2 {
+        font-size: 13px !important;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    .contact-headers {
+        width: 55% !important;
+    }
+
+    .contact-form .ant-form-vertical .ant-form-item .ant-form-item-control {
+        width: 230px !important;
+    }
+}

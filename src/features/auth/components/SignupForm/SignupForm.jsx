@@ -1,9 +1,8 @@
-import { Button, Form, Col, Input, Row, Tooltip, Select } from "antd";
+import { Button, Form, Col, Input, Row } from "antd";
 import "./SignupForm.css";
 
 const { Item } = Form;
 const { Password } = Input;
-const { Option } = Select;
 
 export const SignupForm = () => {
     const [form] = Form.useForm();
@@ -30,6 +29,7 @@ export const SignupForm = () => {
                                 message: "Email is Required",
                             },
                         ]}
+                        normalize={(value, prevVal, prevVals) => value.trim()}
                     >
                         <Input />
                     </Item>
@@ -50,15 +50,16 @@ export const SignupForm = () => {
                                 message: "Password is Required",
                             },
                         ]}
+                        normalize={(value, prevVal, prevVals) => value.trim()}
                     >
-                        <Tooltip
+                        {/* <Tooltip
                             placement="right"
                             title="Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one digit, and one special character."
                         >
-                            <div>
-                                <Password style={{ padding: "10px 10px" }} />
-                            </div>
-                        </Tooltip>
+                        <div> */}
+                        <Password style={{ padding: "10px 10px" }} />
+                        {/* </div>
+                        </Tooltip> */}
                     </Item>
                 </Row>
                 <Row>
@@ -68,9 +69,10 @@ export const SignupForm = () => {
                         rules={[
                             {
                                 required: true,
-                                message: "Please input your First Name!",
+                                message: "First name is required",
                             },
                         ]}
+                        normalize={(value, prevVal, prevVals) => value.trim()}
                     >
                         <Input />
                     </Item>
@@ -82,9 +84,10 @@ export const SignupForm = () => {
                         rules={[
                             {
                                 required: true,
-                                message: "Please input your Last Name!",
+                                message: "Last name is required",
                             },
                         ]}
+                        normalize={(value, prevVal, prevVals) => value.trim()}
                     >
                         <Input />
                     </Item>
@@ -96,9 +99,10 @@ export const SignupForm = () => {
                         rules={[
                             {
                                 required: true,
-                                message: "Please input your Country!",
+                                message: "Country is required",
                             },
                         ]}
+                        normalize={(value, prevVal, prevVals) => value.trim()}
                     >
                         <Input />
                     </Item>
@@ -110,32 +114,12 @@ export const SignupForm = () => {
                         rules={[
                             {
                                 required: true,
-                                message: "Please input your City!",
+                                message: "City is required",
                             },
                         ]}
+                        normalize={(value, prevVal, prevVals) => value.trim()}
                     >
                         <Input />
-                    </Item>
-                </Row>
-                <Row>
-                    <Item
-                        label="Skills"
-                        name="skills"
-                        rules={[
-                            {
-                                required: true,
-                                message: "Please input a maximum of 10 skills!",
-                            },
-                        ]}
-                    >
-                        <Select
-                            placeholder="Select a option and change input text above"
-                            allowClear
-                        >
-                            <Option value="male">male</Option>
-                            <Option value="female">female</Option>
-                            <Option value="other">other</Option>
-                        </Select>
                     </Item>
                 </Row>
                 <Row>
@@ -145,9 +129,10 @@ export const SignupForm = () => {
                         rules={[
                             {
                                 required: true,
-                                message: "Please input your Experience!",
+                                message: "Experience is required",
                             },
                         ]}
+                        normalize={(value, prevVal, prevVals) => value.trim()}
                     >
                         <Input />
                     </Item>
@@ -159,9 +144,10 @@ export const SignupForm = () => {
                         rules={[
                             {
                                 required: true,
-                                message: "Please input your Interests!",
+                                message: "Interests is required",
                             },
                         ]}
+                        normalize={(value, prevVal, prevVals) => value.trim()}
                     >
                         <Input />
                     </Item>

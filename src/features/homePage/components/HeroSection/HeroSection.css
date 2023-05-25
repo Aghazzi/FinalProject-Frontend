@@ -1,0 +1,75 @@
+@media screen and (max-width: 990px) {
+    .herosec-main {
+        display: flex;
+        flex-direction: column !important;
+        gap: 50px !important;
+    }
+    .herosec-card {
+        display: flex;
+        flex-direction: column !important;
+    }
+
+    .herosec-card .ant-card {
+        width: 350px !important;
+    }
+
+    .herosec-headers {
+        width: 85% !important;
+        gap: 20px !important;
+    }
+
+    .herosec-headers h1 {
+        font-size: 20px !important;
+    }
+
+    .herosec-headers h2 {
+        font-size: 15px !important;
+    }
+
+    .herosecImage img {
+        height: 350px !important;
+        width: 350px !important;
+    }
+    .herosec-learn {
+        width: 40% !important;
+        align-items: center !important;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    .herosec-main {
+        display: flex;
+        flex-direction: column !important;
+        gap: 50px !important;
+    }
+    .herosec-card {
+        display: flex;
+        flex-direction: column !important;
+    }
+
+    .herosec-card .ant-card {
+        width: 240px !important;
+    }
+
+    .herosec-headers {
+        width: 58% !important;
+        gap: 20px !important;
+    }
+
+    .herosec-headers h1 {
+        font-size: 15px !important;
+    }
+
+    .herosec-headers h2 {
+        font-size: 13px !important;
+    }
+
+    .herosecImage img {
+        height: 250px !important;
+        width: 220px !important;
+    }
+    .herosec-learn {
+        width: 43% !important;
+        align-items: center !important;
+    }
+}

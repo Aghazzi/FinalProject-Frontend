@@ -6,6 +6,7 @@ import {
     SignupOrg,
     Signin,
 } from "../features/auth/views";
+import { HomePageLanding } from "../features/homePage/views";
 
 export const AppRouter = () => {
     return (
@@ -14,6 +15,7 @@ export const AppRouter = () => {
             <Route path="/signupcard" element={<SignupLanding />} />
             <Route path="/signupform-vol" element={<Signup />} />
             <Route path="/signupform-org" element={<SignupOrg />} />
+            <Route path="/home" element={<HomePageLanding />} />
         </Routes>
     );
 };

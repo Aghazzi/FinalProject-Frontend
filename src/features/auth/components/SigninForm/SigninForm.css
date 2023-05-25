@@ -1,0 +1,23 @@
+@media screen and (max-width: 990px) {
+    .sigin-container {
+        display: flex !important;
+        flex: 1 !important;
+        flex-direction: column !important;
+        padding-top: 30px;
+        gap: 40px !important;
+    }
+
+    .signin-card {
+        width: 80% !important;
+    }
+
+    .signin-reg {
+        width: 80% !important;
+        height: 25vh !important;
+        align-items: center;
+    }
+    
+    .signin-login {
+       padding-right: 0 !important;
+    }
+}

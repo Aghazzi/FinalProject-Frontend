@@ -7,7 +7,7 @@
 
 .signup-landing {
     width: 100%;
-    background-color: rgb(233, 229, 229);
+    background-color: var(--accent3-color);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -57,7 +57,7 @@
         flex-direction: column;
         gap: 20px;
     }
-    .signupLanding-title{
+    .signupLanding-title {
         gap: 20px;
         padding: 10px;
     }

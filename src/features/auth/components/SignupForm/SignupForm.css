@@ -16,26 +16,26 @@ Form {
     display: flex;
     justify-content: center;
     width: 100%;
-    background-color: rgb(233, 229, 229);
+    background-color: var(--accent3-color);
 }
 .ant-input {
     padding: 10px 10px;
 }
 
 @media screen and (max-width: 990px) {
-        .createVol-h1 {
-            font-size: 20px !important;
-        }
+    .createVol-h1 {
+        font-size: 20px !important;
+    }
 
-        .SignupForm-vol {
-            display: flex !important;
-            width: 30%;
-            justify-content:  center !important;
-        }
+    .SignupForm-vol {
+        display: flex !important;
+        width: 30%;
+        justify-content: center !important;
+    }
 
-        .ant-form-vertical .ant-form-item .ant-form-item-control {
-            width: 300px;
-        }
+    .ant-form-vertical .ant-form-item .ant-form-item-control {
+        width: 300px;
+    }
 }
 
 @media screen and (max-width: 300px) {
@@ -46,11 +46,10 @@ Form {
     .SignupForm-vol {
         display: flex !important;
         width: 30%;
-        justify-content:  center !important;
+        justify-content: center !important;
     }
 
     .ant-form-vertical .ant-form-item .ant-form-item-control {
         width: 250px;
     }
 }
-

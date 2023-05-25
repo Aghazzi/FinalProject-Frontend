@@ -1,15 +1,17 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from "react";
 import "./Nav.css";
 import { AiOutlineBars, AiOutlineDown } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import Logo from "../../../images/Tatawu3-02.png";
 
 export const Nav = () => {
+    const [isOpen, setIsOpen] = useState(false);
     const [isActive, setIsActive] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     const toggleMenu = () => {
         setIsActive(!isActive);
+        setIsOpen(!isOpen);
     };
 
     const handleLogout = () => {
@@ -27,64 +29,81 @@ export const Nav = () => {
                         <AiOutlineBars />
                     </i>
                 </div>
-                <a href="index.html" className="logo">
-                    CODEBRO
-                </a>
+                <Link to="home" className="logo">
+                    <img
+                        src={Logo}
+                        alt="Logo"
+                        style={{ width: "70px", height: "70px" }}
+                    />
+                </Link>
                 <ul className="nav-list">
                     <div className="right-nav">
                         <li>
-                            <a href="#">Home</a>
+                            <Link to="/home" onClick={toggleMenu}>
+                                Home
+                            </Link>
                         </li>
                         <li>
-                            <a href="#">
+                            <Link to="#">
                                 For Volunteers <AiOutlineDown />
                                 <i className="fas fa-caret-down"></i>
-                            </a>
+                            </Link>
                             <ul className="sub-menu">
                                 <li>
-                                    <a href="#">Navel</a>
+                                    <Link to="#" onClick={toggleMenu}>
+                                        Navel
+                                    </Link>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <Link to="#" onClick={toggleMenu}>
                                         Mandarine
                                         <i className="fas fa-caret-down"></i>
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li>
-                                    <a href="#">Tangelos</a>
+                                    <Link to="#" onClick={toggleMenu}>
+                                        Tangelos
+                                    </Link>
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            <a href="#">
+                            <Link to="#">
                                 For Organizations <AiOutlineDown />
                                 <i className="fas fa-caret-down"></i>
-                            </a>
+                            </Link>
                             <ul className="sub-menu">
                                 <li>
-                                    <a href="#">Yellow Oranges</a>
+                                    <Link to="#" onClick={toggleMenu}>
+                                        Yellow Oranges
+                                    </Link>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <Link to="#" onClick={toggleMenu}>
                                         Green Oranges
                                         <i className="fas fa-caret-down"></i>
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li>
-                                    <a href="#">Dinner</a>
+                                    <Link to="#" onClick={toggleMenu}>
+                                        Dinner
+                                    </Link>
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            <a href="#">How it Works</a>
+                            <Link to="#" onClick={toggleMenu}>
+                                How it Works
+                            </Link>
                         </li>
                         <li>
-                            <a href="#">Contact</a>
+                            <Link onClick={toggleMenu}>Contact</Link>
                         </li>
                     </div>
                     <div className="button-fix">
                         {!isLoggedIn && (
                             <Link
+                                onClick={toggleMenu}
                                 className="move-right2 btn"
                                 to="/signin"
                                 style={{
@@ -98,6 +117,7 @@ export const Nav = () => {
                         )}
                         {!isLoggedIn && (
                             <Link
+                                onClick={toggleMenu}
                                 className="move-right1 btn"
                                 to="/signupcard"
                                 style={{

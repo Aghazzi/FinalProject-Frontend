@@ -8,7 +8,7 @@ export const AppContent = ({ children }) => {
                 flexGrow: "1",
                 width: "100%",
                 margin: "auto",
-                alignItems: "center",
+                // textAlign: "center",
             }}
         >
             {children}

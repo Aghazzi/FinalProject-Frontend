@@ -1,70 +1,94 @@
-import React from "react";
-import { Button, Form, Col, Input, Row, Tooltip } from "antd";
+import { Button, Checkbox, Form, Input } from "antd";
 import "./SigninForm.css";
 
+const onFinish = (values) => {
+    console.log("Success:", values);
+};
+const onFinishFailed = (errorInfo) => {
+    console.log("Failed:", errorInfo);
+};
 const { Item } = Form;
 const { Password } = Input;
 
-export const SigninForm = () => {
-    const [form] = Form.useForm();
-    const handleSubmit = (values) => {
-        console.log(values);
-        form.resetFields();
-    };
-    return (
-        <Form onFinish={handleSubmit} form={form} layout="vertical">
-            <Col>
-                <Row>
-                    <Item
-                        label="Email"
-                        name="email"
-                        rules={[
-                            {
-                                pattern: new RegExp(
-                                    /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
-                                ),
-                                message: "Email is invalid",
-                            },
-                            {
-                                required: true,
-                                message: "Email is Required",
-                            },
-                        ]}
-                    >
-                        <Input />
-                    </Item>
-                </Row>
-                <Row>
-                    <Item
-                        label="Password"
-                        name="password"
-                        rules={[
-                            {
-                                pattern: new RegExp(
-                                    /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]).{8,}$/
-                                ),
-                                message: "Password is too weak",
-                            },
-                            {
-                                required: true,
-                                message: "Password is Required",
-                            },
-                        ]}
-                    >
-                        <Tooltip
-                            placement="right"
-                            title="Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one digit, and one special character."
-                        >
-                            <div>
-                                <Password style={{ padding: "10px 10px" }} />
-                            </div>
-                        </Tooltip>
-                    </Item>
-                </Row>
-                <Button htmlType="submit" type="primary">
-                    Submit
-                </Button>
-            </Col>
-        </Form>
-    );
-};
+export const SigninForm = () => (
+    <Form
+        name="basic"
+        labelCol={{
+            span: 8,
+        }}
+        wrapperCol={{
+            span: 16,
+        }}
+        style={{
+            maxWidth: 600,
+        }}
+        initialValues={{
+            remember: true,
+        }}
+        onFinish={onFinish}
+        onFinishFailed={onFinishFailed}
+        autoComplete="off"
+    >
+        <Item
+            label="Email"
+            name="email"
+            rules={[
+                {
+                    pattern: new RegExp(
+                        /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+                    ),
+                    message: "Email is invalid",
+                },
+                {
+                    required: true,
+                    message: "Email is Required",
+                },
+            ]}
+        >
+            <Input />
+        </Item>
+        <Item
+            label="Password"
+            name="password"
+            rules={[
+                {
+                    pattern: new RegExp(
+                        /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]).{8,}$/
+                    ),
+                    message: "Password is too weak",
+                },
+                {
+                    required: true,
+                    message: "Password is required",
+                },
+            ]}
+        >
+            <Password
+                style={{
+                    height: "45px",
+                }}
+            />
+        </Item>
+
+        <Item
+            name="remember"
+            valuePropName="checked"
+            wrapperCol={{
+                offset: 8,
+                span: 16,
+            }}
+        >
+            <Checkbox>Remember me</Checkbox>
+        </Item>
+        <Item
+            wrapperCol={{
+                offset: 8,
+                span: 16,
+            }}
+        >
+            <Button type="primary" htmlType="submit">
+                Submit
+            </Button>
+        </Item>
+    </Form>
+);

@@ -1,0 +1,50 @@
+@media screen and (max-width: 990px) {
+    .orgContent-container {
+        align-items: flex-start !important;
+    }
+    .orgContent-main {
+        display: flex !important;
+        flex-direction: column-reverse !important;
+        align-items: flex-start !important;
+        gap: 20px !important;
+    }
+    .orgContent-headers {
+        width: 100% !important;
+    }
+    .orgContent-img {
+        width: 105% !important;
+    }
+    .orgContent-learn {
+        display: flex;
+    }
+    .orgContent-headers h1 {
+        font-size: 15px !important;
+    }
+
+    .orgContent-headers h2 {
+        font-size: 13px !important;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    .orgContent-container {
+        align-items: start !important;
+    }
+    .orgContent-main {
+        display: flex !important;
+        flex-direction: column-reverse !important;
+        align-items: flex-start !important;
+        gap: 20px !important;
+    }
+    .orgContent-headers {
+        width: 70% !important;
+    }
+
+    .orgContent-img img {
+        height: 150px !important;
+        width: 200px !important;
+    }
+    .orgContent-img {
+        width: 70% !important;
+    }
+}

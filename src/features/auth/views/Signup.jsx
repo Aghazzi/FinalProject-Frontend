@@ -15,7 +15,7 @@ export const Signup = () => {
             }}
         >
             <h1 className="createVol-h1" style={{ fontSize: "32px" }}>
-                Create a CodeBro account
+                Create a volunteer account
             </h1>
             <div className="SignupForm-vol-inp">
                 <SignupForm />

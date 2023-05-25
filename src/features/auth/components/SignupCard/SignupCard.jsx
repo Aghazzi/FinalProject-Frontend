@@ -4,16 +4,13 @@ import { Card } from "antd";
 
 const { Meta } = Card;
 
-export const SignupCard = ({ title, description, image }) => {
+export const SignupCard = ({ title, description, image, style }) => {
     return (
         <>
             <section className="card">
                 <Card
                     hoverable
-                    style={{
-                        width: 310,
-                        height: 300,
-                    }}
+                    style={style}
                     cover={
                         <img
                             alt="example"
