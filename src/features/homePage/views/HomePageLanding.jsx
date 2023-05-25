@@ -21,8 +21,8 @@ export const HomePageLanding = () => {
         >
             <HeroSection />
             <OrgContent />
-            <VolContent />
             <Stats />
+            <VolContent />
             <ContactForm />
         </div>
     );

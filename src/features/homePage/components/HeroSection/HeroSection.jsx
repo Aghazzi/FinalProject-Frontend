@@ -72,7 +72,7 @@ export const HeroSection = () => {
                     gap: "20px",
                 }}
             >
-                <Link>
+                <Link to="/signupform-vol">
                     <Card
                         hoverable
                         style={{
@@ -101,7 +101,7 @@ export const HeroSection = () => {
                         />
                     </Card>
                 </Link>
-                <Link>
+                <Link to="/signupform-org">
                     <Card
                         hoverable
                         style={{
