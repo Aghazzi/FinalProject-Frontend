@@ -64,7 +64,7 @@ export const Signin = () => {
                     height: "40vh",
                 }}
             >
-                <h1>New to Tatawou3?</h1>
+                <h1>New to Tatawu3?</h1>
                 <h2
                     style={{
                         opacity: "0.7",
