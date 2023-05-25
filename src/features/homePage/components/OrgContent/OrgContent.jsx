@@ -35,8 +35,8 @@ export const OrgContent = () => {
                         flexDirection: "column",
                         justifyContent: "center",
                         width: "50%",
-                        textAlign: "flex-start",
                         gap: "20px",
+                        textAlign: "start",
                     }}
                 >
                     <h2 style={{ fontSize: "20px" }}>Organizations</h2>

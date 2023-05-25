@@ -33,10 +33,10 @@ export const HeroSection = () => {
                         display: "flex",
                         flexDirection: "column",
                         justifyContent: "center",
-                        textAlign: "start",
                         color: "var(--accent2-color)",
                         width: "40%",
                         gap: "50px",
+                        textAlign: "flex-start",
                     }}
                 >
                     <h2 style={{ fontSize: "30px" }}>Tatawu3</h2>

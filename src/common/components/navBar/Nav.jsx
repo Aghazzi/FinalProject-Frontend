@@ -97,7 +97,9 @@ export const Nav = () => {
                             </Link>
                         </li>
                         <li>
-                            <Link onClick={toggleMenu}>Contact</Link>
+                            <Link to="#contactform" onClick={toggleMenu}>
+                                Contact
+                            </Link>
                         </li>
                     </div>
                     <div className="button-fix">

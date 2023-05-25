@@ -9,6 +9,7 @@
         gap: 20px !important;
     }
     .orgContent-headers {
+        text-align: start !important;
         width: 100% !important;
     }
     .orgContent-img {

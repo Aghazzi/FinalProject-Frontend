@@ -34,9 +34,6 @@ export const SignupLanding = () => {
                 </h2>
             </div>
             <div className="signup-landing">
-                {/* <div>
-                        <h2>Are you</h2>
-                    </div> */}
                 <div className="card">
                     <Link to="/signupform-vol">
                         <SignupCard

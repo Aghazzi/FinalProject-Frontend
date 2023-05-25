@@ -4,6 +4,7 @@
     }
 
     .stats-headers {
+        text-align: start !important;
         width: 85% !important;
     }
 

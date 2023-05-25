@@ -57,7 +57,7 @@ export const ContactForm = () => {
                     support
                 </h2>
             </div>
-            <div className="contact-form">
+            <div className="contact-form" id="contactform" >
                 <Form
                     layout="vertical"
                     name="nest-messages"

@@ -9,16 +9,7 @@ import {
 
 export const HomePageLanding = () => {
     return (
-        <div
-            style={{
-                display: "flex",
-                flex: "1",
-                justifyContent: "center",
-                alignItems: "center",
-                flexDirection: "column",
-                height: "100%",
-            }}
-        >
+        <div>
             <HeroSection />
             <OrgContent />
             <Stats />
