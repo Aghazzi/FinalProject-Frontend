@@ -1,9 +1,13 @@
 import { Button, Checkbox, Form, Input } from "antd";
 import "./SigninForm.css";
+import AuthContext from "../../store/Context/AuthContext";
+import React, { useContext } from "react";
+
 
 const onFinish = (values) => {
     console.log("Success:", values);
 };
+
 const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
 };
@@ -35,7 +39,7 @@ export const SigninForm = () => (
             rules={[
                 {
                     pattern: new RegExp(
-                        /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+                        /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
                     ),
                     message: "Email is invalid",
                 },
@@ -53,7 +57,7 @@ export const SigninForm = () => (
             rules={[
                 {
                     pattern: new RegExp(
-                        /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]).{8,}$/
+                        /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]).{8,}$/,
                     ),
                     message: "Password is too weak",
                 },
