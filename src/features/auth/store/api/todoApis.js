@@ -5,12 +5,12 @@ export const todoApi = axios.create({
 });
 
 export const getTodos = async () => {
-    const response = await todoApi.get("/todos");
+    const response = await todoApi.get("/jobs");
     return response.data;
 };
 
 export const addTodo = async (todo) => {
-    return await todoApi.post("/todos", todo);
+    return await todoApi.post("/jobs", todo);
 };
 
 export const updateTodo = async (todo) => {

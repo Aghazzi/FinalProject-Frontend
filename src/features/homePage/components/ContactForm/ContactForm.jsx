@@ -92,8 +92,8 @@ export const ContactForm = () => {
                         <Input />
                     </Item>
                     <Item
-                        name={["user", "introduction"]}
-                        label="Introduction"
+                        name={["user", "message"]}
+                        label="Message"
                         rules={[
                             {
                                 required: true,

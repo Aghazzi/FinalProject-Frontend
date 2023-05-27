@@ -1,6 +1,6 @@
 import React from "react";
 import "./HeroSection.css";
-import HeroImg2 from "../../../../images/Group 1.png";
+import HeroImg2 from "../../../../images/image 1.png";
 import { Link } from "react-router-dom";
 import { Card } from "antd";
 
@@ -20,10 +20,12 @@ export const HeroSection = () => {
             <div
                 className="herosec-main"
                 style={{
-                    width: "100%",
+                    width: "80%",
                     display: "flex",
                     flexDirection: "row",
-                    justifyContent: "center",
+                    justifyContent: "space-between",
+                    alignItems:"center",
+                    margin:"auto",
                     padding: "30px",
                 }}
             >
@@ -44,12 +46,12 @@ export const HeroSection = () => {
                         Where Talents Meets Purpose
                     </h1>
                     <h2 style={{ fontSize: "20px" }}>
-                        We are a networkof volunteers and nonprofit
+                        We are a network of volunteers and nonprofit
                         organizations working together to solve urgent problems
                         and lift up communities.
                     </h2>
                 </div>
-                <div className="herosecImage" style={{ width: "40%" }}>
+                <div className="herosecImage" style={{ width: "32%" }}>
                     <img
                         alt="img"
                         style={{
