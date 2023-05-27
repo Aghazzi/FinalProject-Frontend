@@ -7,10 +7,12 @@ import {
     Signin,
 } from "../features/auth/views";
 import { HomePageLanding } from "../features/homePage/views";
+import { JobList } from "../features/auth/store/features/JobList";
 
 export const AppRouter = () => {
     return (
         <Routes>
+            <Route path="/" element={<JobList/>}/>
             <Route path="/signin" element={<Signin />} />
             <Route path="/signupcard" element={<SignupLanding />} />
             <Route path="/signupform-vol" element={<Signup />} />
