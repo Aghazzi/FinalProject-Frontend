@@ -30,6 +30,7 @@ export const ContactForm = () => {
     return (
         <div
             className="contact-container"
+            id="contactform"
             style={{
                 display: "flex",
                 flexDirection: "column",
@@ -57,63 +58,61 @@ export const ContactForm = () => {
                     support
                 </h2>
             </div>
-            <div className="contact-form" id="contactform" >
-                <Form
-                    layout="vertical"
-                    name="nest-messages"
-                    form={form}
-                    onFinish={onFinish}
-                    style={{
-                        width: "400px",
-                    }}
-                    validateMessages={validateMessages}
+            <Form
+                layout="vertical"
+                name="nest-messages"
+                form={form}
+                onFinish={onFinish}
+                style={{
+                    width: "400px",
+                }}
+                validateMessages={validateMessages}
+            >
+                <Item
+                    name={["user", "name"]}
+                    label="Name"
+                    rules={[
+                        {
+                            required: true,
+                        },
+                    ]}
                 >
-                    <Item
-                        name={["user", "name"]}
-                        label="Name"
-                        rules={[
-                            {
-                                required: true,
-                            },
-                        ]}
-                    >
-                        <Input />
-                    </Item>
-                    <Item
-                        name={["user", "email"]}
-                        label="Email"
-                        rules={[
-                            {
-                                required: true,
-                                type: "email",
-                            },
-                        ]}
-                    >
-                        <Input />
-                    </Item>
-                    <Item
-                        name={["user", "message"]}
-                        label="Message"
-                        rules={[
-                            {
-                                required: true,
-                            },
-                        ]}
-                    >
-                        <Input.TextArea />
-                    </Item>
-                    <Item
-                        wrapperCol={{
-                            ...layout.wrapperCol,
-                            offset: 8,
-                        }}
-                    >
-                        <Button type="primary" htmlType="submit">
-                            Submit
-                        </Button>
-                    </Item>
-                </Form>
-            </div>
+                    <Input />
+                </Item>
+                <Item
+                    name={["user", "email"]}
+                    label="Email"
+                    rules={[
+                        {
+                            required: true,
+                            type: "email",
+                        },
+                    ]}
+                >
+                    <Input />
+                </Item>
+                <Item
+                    name={["user", "message"]}
+                    label="Message"
+                    rules={[
+                        {
+                            required: true,
+                        },
+                    ]}
+                >
+                    <Input.TextArea />
+                </Item>
+                <Item
+                    wrapperCol={{
+                        ...layout.wrapperCol,
+                        offset: 8,
+                    }}
+                >
+                    <Button type="primary" htmlType="submit">
+                        Submit
+                    </Button>
+                </Item>
+            </Form>
         </div>
     );
 };

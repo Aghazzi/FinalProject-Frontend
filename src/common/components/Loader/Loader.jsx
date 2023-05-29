@@ -1,7 +1,7 @@
 import React from "react";
 import "./Loader.css";
 
-const Loader = ({ type }) => {
+export const Loader = ({ type }) => {
     const classNames = `loader loader--style${type}`;
     return (
         <div className={classNames} title={type}>
@@ -35,4 +35,3 @@ const Loader = ({ type }) => {
         </div>
     );
 };
-export default Loader;

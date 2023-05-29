@@ -1,11 +1,41 @@
-import React from "react";
+/* eslint-disable no-unused-vars */
+import React, { useContext } from "react";
 import { SigninForm } from "../components";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../store/Context/AuthProvider";
+import { QueryClient, useMutation } from "react-query";
+import { loginApi } from "../store/authApi";
+import { Loader } from "../../../common/components/Loader/Loader";
+import { useNavigate } from "react-router-dom";
 
 export const Signin = () => {
+    const { user, setUser } = useContext(AuthContext);
+    const queryClient = new QueryClient();
+    const navigate = useNavigate();
+
+    const {
+        mutate: mutateLogin,
+        isLoading,
+        isError,
+        error,
+    } = useMutation(loginApi, {
+        mutationKey: ["auth"],
+        onSuccess: (data) => {
+            console.log("ok", data);
+            setUser(data);
+            queryClient.invalidateQueries("auth");
+        },
+    });
+
+    const onFinish = (values) => {
+        mutateLogin(values);
+        navigate("/");
+    };
+
+
     return (
         <div
-            className="sigin-container"
+            className="signin-container"
             style={{
                 display: "flex",
                 flex: "1",
@@ -50,7 +80,7 @@ export const Signin = () => {
                         paddingRight: "80px",
                     }}
                 >
-                    <SigninForm />
+                    <SigninForm onFinish={onFinish} />
                 </div>
             </div>
             <div

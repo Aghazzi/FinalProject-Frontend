@@ -4,19 +4,19 @@ import "./SignupFormOrg.css";
 const { Item } = Form;
 const { Password } = Input;
 
-export const SignupFormOrg = () => {
+export const SignupFormOrg = ({onFinish}) => {
     const [form] = Form.useForm();
-    const handleSubmit = (values) => {
-        console.log(values);
-        form.resetFields();
-    };
+    // const handleSubmit = (values) => {
+    //     console.log(values);
+    //     form.resetFields();
+    // };
     return (
-        <Form onFinish={handleSubmit} form={form} layout="vertical">
+        <Form onFinish={onFinish} form={form} layout="vertical">
             <Col>
                 <Row>
                     <Item
                         label="Organization Name"
-                        name="organization name"
+                        name="orgName"
                         rules={[
                             {
                                 required: true,
@@ -78,7 +78,7 @@ export const SignupFormOrg = () => {
                 <Row>
                     <Item
                         label="Support Email"
-                        name="support email"
+                        name="contactPersonEmail"
                         rules={[
                             {
                                 required: true,
@@ -92,7 +92,7 @@ export const SignupFormOrg = () => {
                 <Row>
                     <Item
                         label="Support Name"
-                        name="support name"
+                        name="contactPersonName"
                         rules={[
                             {
                                 required: true,
@@ -106,7 +106,7 @@ export const SignupFormOrg = () => {
                 <Row>
                     <Item
                         label="Support Phone"
-                        name="support phone"
+                        name="contactPersonPhone"
                         rules={[
                             {
                                 required: true,

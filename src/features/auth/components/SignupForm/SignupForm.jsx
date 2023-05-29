@@ -1,17 +1,19 @@
 import { Button, Form, Col, Input, Row } from "antd";
 import "./SignupForm.css";
+import React from "react";
 
 const { Item } = Form;
 const { Password } = Input;
 
-export const SignupForm = () => {
+export const SignupForm = ({ onFinish, formValues }) => {
     const [form] = Form.useForm();
-    const handleSubmit = (values) => {
-        console.log(values);
-        form.resetFields();
-    };
+
+    React.useEffect(() => {
+        form.setFieldsValue(formValues);
+    }, [formValues, form]);
+
     return (
-        <Form onFinish={handleSubmit} form={form} layout="vertical">
+        <Form onFinish={onFinish} form={form} layout="vertical">
             <Col>
                 <Row>
                     <Item
@@ -29,7 +31,6 @@ export const SignupForm = () => {
                                 message: "Email is Required",
                             },
                         ]}
-                        normalize={(value, prevVal, prevVals) => value.trim()}
                     >
                         <Input />
                     </Item>
@@ -50,29 +51,20 @@ export const SignupForm = () => {
                                 message: "Password is Required",
                             },
                         ]}
-                        normalize={(value, prevVal, prevVals) => value.trim()}
                     >
-                        {/* <Tooltip
-                            placement="right"
-                            title="Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one digit, and one special character."
-                        >
-                        <div> */}
                         <Password style={{ padding: "10px 10px" }} />
-                        {/* </div>
-                        </Tooltip> */}
                     </Item>
                 </Row>
                 <Row>
                     <Item
                         label="First Name"
-                        name="first name"
+                        name="firstName"
                         rules={[
                             {
                                 required: true,
                                 message: "First name is required",
                             },
                         ]}
-                        normalize={(value, prevVal, prevVals) => value.trim()}
                     >
                         <Input />
                     </Item>
@@ -80,14 +72,13 @@ export const SignupForm = () => {
                 <Row>
                     <Item
                         label="Last Name"
-                        name="last name"
+                        name="lastName"
                         rules={[
                             {
                                 required: true,
                                 message: "Last name is required",
                             },
                         ]}
-                        normalize={(value, prevVal, prevVals) => value.trim()}
                     >
                         <Input />
                     </Item>
@@ -102,7 +93,6 @@ export const SignupForm = () => {
                                 message: "Country is required",
                             },
                         ]}
-                        normalize={(value, prevVal, prevVals) => value.trim()}
                     >
                         <Input />
                     </Item>
@@ -117,23 +107,12 @@ export const SignupForm = () => {
                                 message: "City is required",
                             },
                         ]}
-                        normalize={(value, prevVal, prevVals) => value.trim()}
                     >
                         <Input />
                     </Item>
                 </Row>
                 <Row>
-                    <Item
-                        label="Experience"
-                        name="experience"
-                        rules={[
-                            {
-                                required: true,
-                                message: "Experience is required",
-                            },
-                        ]}
-                        normalize={(value, prevVal, prevVals) => value.trim()}
-                    >
+                    <Item label="Experience" name="experience">
                         <Input />
                     </Item>
                 </Row>
@@ -147,7 +126,6 @@ export const SignupForm = () => {
                                 message: "Interests is required",
                             },
                         ]}
-                        normalize={(value, prevVal, prevVals) => value.trim()}
                     >
                         <Input />
                     </Item>

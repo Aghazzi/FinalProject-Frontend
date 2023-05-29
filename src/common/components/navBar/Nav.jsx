@@ -1,13 +1,43 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./Nav.css";
 import { AiOutlineBars, AiOutlineDown } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import Logo from "../../../images/Tatawu3-02.png";
+import { AuthContext } from "../../../features/auth/store/Context/AuthProvider";
+import { QueryClient, useMutation } from "react-query";
+import { logoutApi } from "../../../features/auth/store/authApi";
+import { Loader } from "../Loader/Loader";
 
 export const Nav = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [isActive, setIsActive] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const { user, setUser } = useContext(AuthContext);
+    const queryClient = new QueryClient();
+
+    const {
+        mutate: mutateLogout,
+        isLoading,
+        isError,
+        error,
+    } = useMutation(logoutApi, {
+        mutationKey: ["logout"],
+        onSuccess: (data) => {
+            console.log("ok", data);
+            setUser(null);
+            localStorage.removeItem("isLoggedIn");
+            queryClient.invalidateQueries("logout");
+        },
+    });
+
+    useEffect(() => {
+        setIsLoggedIn(!!user);
+    }, [user]);
+
+    useEffect(() => {
+        const storedLoginStatus = localStorage.getItem("isLoggedIn");
+        setIsLoggedIn(storedLoginStatus === "true");
+    }, []);
 
     const toggleMenu = () => {
         setIsActive(!isActive);
@@ -15,11 +45,15 @@ export const Nav = () => {
     };
 
     const handleLogout = () => {
+        mutateLogout();
         setIsLoggedIn(false);
     };
 
+    if (isLoading) return <Loader />;
+
     return (
         <header>
+            {isError && <div>{error}</div>}
             <nav className={isActive ? "active" : ""}>
                 <div className="menu-icons" onClick={toggleMenu}>
                     <i className="fas fa-bars">
@@ -39,7 +73,7 @@ export const Nav = () => {
                 <ul className="nav-list">
                     <div className="right-nav">
                         <li>
-                            <Link to="/home" onClick={toggleMenu}>
+                            <Link to="/" onClick={toggleMenu}>
                                 Home
                             </Link>
                         </li>
@@ -91,11 +125,11 @@ export const Nav = () => {
                                 </li>
                             </ul>
                         </li>
-                        <li>
+                        {/* <li>
                             <Link to="#" onClick={toggleMenu}>
                                 How it Works
                             </Link>
-                        </li>
+                        </li> */}
                         <li>
                             <a href="#contactform" onClick={toggleMenu}>
                                 Contact
