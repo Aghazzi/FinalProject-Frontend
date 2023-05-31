@@ -27,13 +27,15 @@ export const Signin = () => {
             setUser(data);
             setCookie("user", data);
             queryClient.invalidateQueries("auth");
+            navigate("/");
         },
     });
 
     const onFinish = (values) => {
         mutateLogin(values);
-        navigate("/");
     };
+
+    if (isLoading) return <Loader />;
 
     return (
         <div
