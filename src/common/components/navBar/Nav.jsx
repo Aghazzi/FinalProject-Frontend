@@ -49,7 +49,7 @@ export const Nav = () => {
         setIsLoggedIn(false);
     };
 
-    if (isLoading) return <Loader />;
+    // if (isLoading) return <Loader />;
 
     return (
         <header>

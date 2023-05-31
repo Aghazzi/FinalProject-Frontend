@@ -1,0 +1,39 @@
+@media screen and (max-width: 990px) {
+    .jobform-main {
+        width: 100% !important;
+        justify-content: center !important;
+    }
+
+    .jobform-main h1 {
+        font-size: 15px;
+    }
+
+    .jobform-card {
+        width: 100% !important;
+    }
+
+    .jobform-card .ant-card {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 300px !important;
+        height: 250px !important;
+    }
+    .jobform-main input {
+        width: 210px !important;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    .jobform-main {
+        width: 100% !important;
+    }
+
+    .jobform-main h1 {
+        font-size: 12px;
+    }
+
+    .jobform-main input {
+        width: 150px !important;
+    }
+    
+}

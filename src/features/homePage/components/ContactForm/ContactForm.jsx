@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Form, Input } from "antd";
 import "./ContactForm.css";
+// import emailjs from "@emailjs/browser";
 
 const layout = {
     labelCol: {
@@ -22,8 +23,26 @@ const validateMessages = {
 const { Item } = Form;
 
 export const ContactForm = () => {
+    // const contactForm = document.getElementById("contact--form");
+    // const contactForms = useRef();
+
     const [form] = Form.useForm();
     const onFinish = (values) => {
+        // emailjs
+        //     .sendForm(
+        //         `${process.env.REACT_APP_EMAILJS_SERVICE_ID}`,
+        //         `${process.env.REACT_APP_EMAILJS_TEMPLATE_ID}`,
+        //         contactForm,
+        //         `${process.env.REACT_APP_EMAILJS_PUBLIC_KEY}`
+        //     )
+        //     .then(
+        //         (result) => {
+        //             console.log(result.text);
+        //         },
+        //         (error) => {
+        //             console.log(error.text);
+        //         }
+        //     );
         console.log(values);
         form.resetFields();
     };
@@ -59,6 +78,8 @@ export const ContactForm = () => {
                 </h2>
             </div>
             <Form
+                // id="contact--form"
+                // ref={contactForm}
                 layout="vertical"
                 name="nest-messages"
                 form={form}
@@ -69,7 +90,7 @@ export const ContactForm = () => {
                 validateMessages={validateMessages}
             >
                 <Item
-                    name={["user", "name"]}
+                    name="name"
                     label="Name"
                     rules={[
                         {
@@ -80,7 +101,7 @@ export const ContactForm = () => {
                     <Input />
                 </Item>
                 <Item
-                    name={["user", "email"]}
+                    name="email"
                     label="Email"
                     rules={[
                         {
@@ -92,7 +113,7 @@ export const ContactForm = () => {
                     <Input />
                 </Item>
                 <Item
-                    name={["user", "message"]}
+                    name="message"
                     label="Message"
                     rules={[
                         {

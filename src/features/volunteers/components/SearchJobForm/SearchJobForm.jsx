@@ -25,18 +25,20 @@ export const SearchJobForm = ({ onSearch, searchResults }) => {
             }}
         >
             <div
+                className="jobform-main"
                 style={{
                     display: "flex",
                     flexDirection: "row",
                     gap: "20px",
-                    justifyContent: "center",
+                    justifyContent: "flex-start",
                     alignItems: "center",
+                    width: "65%",
                 }}
             >
                 <h1>All Projects</h1>
                 <input
                     type="text"
-                    placeholder="  Search by Title, Description, or Status"
+                    placeholder="  Search all"
                     value={searchQuery}
                     onChange={handleChange}
                     style={{
@@ -45,6 +47,7 @@ export const SearchJobForm = ({ onSearch, searchResults }) => {
                 />
             </div>
             <div
+                className="jobform-card"
                 style={{
                     display: "flex",
                     flexWrap: "wrap",

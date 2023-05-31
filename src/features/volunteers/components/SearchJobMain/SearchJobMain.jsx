@@ -4,6 +4,7 @@ import "./SearchJobMain.css";
 export const SearchJobMain = () => {
     return (
         <div
+            className="seachjobmain-container"
             style={{
                 display: "flex",
                 flexDirection: "column",
@@ -17,6 +18,7 @@ export const SearchJobMain = () => {
             }}
         >
             <div
+                className="searchjobmain-headers"
                 style={{
                     display: "flex",
                     flexDirection: "column",
