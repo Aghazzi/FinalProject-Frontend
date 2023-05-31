@@ -24,7 +24,7 @@ export const SearchJobMain = () => {
                     flexDirection: "column",
                     justifyContent: "center",
                     alignItems: "center",
-                    width: "70%",
+                    width: "80%",
                     padding: "30px",
                     gap: "40px",
                     background: "rgb(233, 229, 229, 0.08)",

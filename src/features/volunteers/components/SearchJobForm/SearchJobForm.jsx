@@ -32,7 +32,7 @@ export const SearchJobForm = ({ onSearch, searchResults }) => {
                     gap: "20px",
                     justifyContent: "flex-start",
                     alignItems: "center",
-                    width: "64%",
+                    width: "73%",
                 }}
             >
                 <h1>All Projects</h1>
@@ -52,7 +52,7 @@ export const SearchJobForm = ({ onSearch, searchResults }) => {
                     display: "flex",
                     flexWrap: "wrap",
                     gap: "30px",
-                    width: "70%",
+                    width: "75%",
                     justifyContent: "center",
                     textAlign: "flex-start",
                 }}
