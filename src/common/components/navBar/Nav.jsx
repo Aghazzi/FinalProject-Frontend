@@ -1,12 +1,14 @@
+/* eslint-disable no-unused-vars */
 import React, { useContext, useEffect, useState } from "react";
 import "./Nav.css";
-import { AiOutlineBars, AiOutlineDown } from "react-icons/ai";
+import { AiOutlineBars, AiOutlineDown, AiOutlineClose } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import Logo from "../../../images/Tatawu3-02.png";
 import { AuthContext } from "../../../features/auth/store/Context/AuthProvider";
 import { QueryClient, useMutation } from "react-query";
 import { logoutApi } from "../../../features/auth/store/authApi";
 import { Loader } from "../Loader/Loader";
+import { useCookies } from "react-cookie";
 
 export const Nav = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -14,6 +16,7 @@ export const Nav = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const { user, setUser } = useContext(AuthContext);
     const queryClient = new QueryClient();
+    const [cookies, setCookie, removeCookie] = useCookies(["user"]);
 
     const {
         mutate: mutateLogout,
@@ -23,21 +26,17 @@ export const Nav = () => {
     } = useMutation(logoutApi, {
         mutationKey: ["logout"],
         onSuccess: (data) => {
-            console.log("ok", data);
+            console.log("logout", data.data.message);
             setUser(null);
-            localStorage.removeItem("isLoggedIn");
+            removeCookie("user");
+            setIsLoggedIn(false);
             queryClient.invalidateQueries("logout");
         },
     });
 
     useEffect(() => {
-        setIsLoggedIn(!!user);
-    }, [user]);
-
-    useEffect(() => {
-        const storedLoginStatus = localStorage.getItem("isLoggedIn");
-        setIsLoggedIn(storedLoginStatus === "true");
-    }, []);
+        setIsLoggedIn(!!user || !!cookies.user);
+    }, [user, cookies]);
 
     const toggleMenu = () => {
         setIsActive(!isActive);
@@ -46,6 +45,7 @@ export const Nav = () => {
 
     const handleLogout = () => {
         mutateLogout();
+        removeCookie("user");
         setIsLoggedIn(false);
     };
 
@@ -60,10 +60,10 @@ export const Nav = () => {
                         <AiOutlineBars />
                     </i>
                     <i className="fas fa-times">
-                        <AiOutlineBars />
+                        <AiOutlineClose />
                     </i>
                 </div>
-                <Link to="home" className="logo">
+                <Link to="/" className="logo">
                     <img
                         src={Logo}
                         alt="Logo"
@@ -84,13 +84,16 @@ export const Nav = () => {
                             </Link>
                             <ul className="sub-menu">
                                 <li>
-                                    <Link to="#" onClick={toggleMenu}>
-                                        Navel
+                                    <Link
+                                        to="/search-jobs"
+                                        onClick={toggleMenu}
+                                    >
+                                        Search Projects
                                     </Link>
                                 </li>
                                 <li>
                                     <Link to="#" onClick={toggleMenu}>
-                                        Mandarine
+                                        Search Organizations
                                         <i className="fas fa-caret-down"></i>
                                     </Link>
                                 </li>

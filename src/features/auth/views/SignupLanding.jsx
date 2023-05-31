@@ -45,7 +45,10 @@ export const SignupLanding = () => {
             </div>
             <div className="signup-landing">
                 <div className="card">
-                    <button onClick={handleSignupVol}>
+                    <button
+                        onClick={handleSignupVol}
+                        style={{ border: "none", background: "none" }}
+                    >
                         <SignupCard
                             style={{ width: "310px", height: "300px" }}
                             title={"Volunteer"}
@@ -57,7 +60,10 @@ export const SignupLanding = () => {
                             }
                         />
                     </button>
-                    <button onClick={handleSignupOrg}>
+                    <button
+                        onClick={handleSignupOrg}
+                        style={{ border: "none", background: "none" }}
+                    >
                         <Link to="/signupform-org">
                             <SignupCard
                                 style={{ width: "310px", height: "300px" }}

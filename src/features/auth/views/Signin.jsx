@@ -7,11 +7,13 @@ import { QueryClient, useMutation } from "react-query";
 import { loginApi } from "../store/authApi";
 import { Loader } from "../../../common/components/Loader/Loader";
 import { useNavigate } from "react-router-dom";
+import { useCookies } from "react-cookie";
 
 export const Signin = () => {
     const { user, setUser } = useContext(AuthContext);
     const queryClient = new QueryClient();
     const navigate = useNavigate();
+    const [cookies, setCookie] = useCookies(["user"]);
 
     const {
         mutate: mutateLogin,
@@ -21,8 +23,9 @@ export const Signin = () => {
     } = useMutation(loginApi, {
         mutationKey: ["auth"],
         onSuccess: (data) => {
-            console.log("ok", data);
+            console.log("signin", data.data.message);
             setUser(data);
+            setCookie("user", data);
             queryClient.invalidateQueries("auth");
         },
     });
@@ -31,7 +34,6 @@ export const Signin = () => {
         mutateLogin(values);
         navigate("/");
     };
-
 
     return (
         <div

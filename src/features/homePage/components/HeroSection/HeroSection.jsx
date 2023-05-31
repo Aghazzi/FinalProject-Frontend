@@ -1,12 +1,22 @@
 import React from "react";
 import "./HeroSection.css";
 import HeroImg2 from "../../../../images/image 1.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Card } from "antd";
 
 const { Meta } = Card;
 
 export const HeroSection = () => {
+    const navigate = useNavigate();
+
+    const handleSignupVol = () => {
+        navigate("/signupform-vol", { state: { role: "User" } });
+    };
+
+    const handleSignupOrg = () => {
+        navigate("/signupform-org", { state: { role: "Org" } });
+    };
+
     return (
         <div
             className="heroSection-container"
@@ -24,8 +34,8 @@ export const HeroSection = () => {
                     display: "flex",
                     flexDirection: "row",
                     justifyContent: "space-between",
-                    alignItems:"center",
-                    margin:"auto",
+                    alignItems: "center",
+                    margin: "auto",
                     padding: "30px",
                 }}
             >
@@ -74,65 +84,75 @@ export const HeroSection = () => {
                     gap: "20px",
                 }}
             >
-                <Link to="/signupform-vol">
-                    <Card
-                        hoverable
-                        style={{
-                            display: "flex",
-                            flexDirection: "row-reverse",
-                            width: "300px",
-                            height: "150px",
-                            justifyContent: "center",
-                            alignItems: "center",
-                        }}
-                        cover={
-                            <img
-                                alt="example"
-                                src="https://det2iec3jodwn.cloudfront.net/images/responsive/login/illustration-volunteer.svg?v=410560"
-                                style={{
-                                    width: "70px",
-                                    transform: "none",
-                                }}
+                <button
+                    onClick={handleSignupVol}
+                    style={{ border: "none", background: "none" }}
+                >
+                    <Link to="/signupform-vol">
+                        <Card
+                            hoverable
+                            style={{
+                                display: "flex",
+                                flexDirection: "row-reverse",
+                                width: "300px",
+                                height: "150px",
+                                justifyContent: "center",
+                                alignItems: "center",
+                            }}
+                            cover={
+                                <img
+                                    alt="example"
+                                    src="https://det2iec3jodwn.cloudfront.net/images/responsive/login/illustration-volunteer.svg?v=410560"
+                                    style={{
+                                        width: "70px",
+                                        transform: "none",
+                                    }}
+                                />
+                            }
+                        >
+                            <Meta
+                                title="Volunteer"
+                                description="Leverage your time and talent"
+                                style={{ textAlign: "center" }}
                             />
-                        }
-                    >
-                        <Meta
-                            title="Volunteer"
-                            description="Leverage your time and talent"
-                            style={{ textAlign: "center" }}
-                        />
-                    </Card>
-                </Link>
-                <Link to="/signupform-org">
-                    <Card
-                        hoverable
-                        style={{
-                            display: "flex",
-                            flexDirection: "row-reverse",
-                            width: "300px",
-                            height: "150px",
-                            justifyContent: "center",
-                            alignItems: "center",
-                            paddingRight: "10px",
-                        }}
-                        cover={
-                            <img
-                                alt="example"
-                                src="https://det2iec3jodwn.cloudfront.net/images/responsive/login/illustration-organization.svg?v=410560"
-                                style={{
-                                    width: "70px",
-                                    transform: "none",
-                                }}
+                        </Card>
+                    </Link>
+                </button>
+                <button
+                    onClick={handleSignupOrg}
+                    style={{ border: "none", background: "none" }}
+                >
+                    <Link to="/signupform-org">
+                        <Card
+                            hoverable
+                            style={{
+                                display: "flex",
+                                flexDirection: "row-reverse",
+                                width: "300px",
+                                height: "150px",
+                                justifyContent: "center",
+                                alignItems: "center",
+                                paddingRight: "10px",
+                            }}
+                            cover={
+                                <img
+                                    alt="example"
+                                    src="https://det2iec3jodwn.cloudfront.net/images/responsive/login/illustration-organization.svg?v=410560"
+                                    style={{
+                                        width: "70px",
+                                        transform: "none",
+                                    }}
+                                />
+                            }
+                        >
+                            <Meta
+                                title="Organization"
+                                description="Boost your programming capacity"
+                                style={{ textAlign: "center" }}
                             />
-                        }
-                    >
-                        <Meta
-                            title="Organization"
-                            description="Boost your programming capacity"
-                            style={{ textAlign: "center" }}
-                        />
-                    </Card>
-                </Link>
+                        </Card>
+                    </Link>
+                </button>
             </div>
             <div
                 className="herosec-learn"

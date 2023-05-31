@@ -14,7 +14,7 @@ export const Signup = () => {
     const location = useLocation();
     const role = location.state?.role || "";
     console.log(location.state?.role);
-    console.log("hi", role);
+    console.log("role", role);
 
     const [formValues, setFormValues] = useState({});
 
