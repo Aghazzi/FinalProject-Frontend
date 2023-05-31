@@ -32,7 +32,7 @@ export const SearchJobForm = ({ onSearch, searchResults }) => {
                     gap: "20px",
                     justifyContent: "flex-start",
                     alignItems: "center",
-                    width: "65%",
+                    width: "64%",
                 }}
             >
                 <h1>All Projects</h1>
