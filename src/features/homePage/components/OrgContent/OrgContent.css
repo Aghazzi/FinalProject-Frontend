@@ -38,14 +38,14 @@
         gap: 20px !important;
     }
     .orgContent-headers {
-        width: 70% !important;
+        width: 110% !important;
     }
 
     .orgContent-img img {
         height: 150px !important;
-        width: 200px !important;
+        width: 280px !important;
     }
     .orgContent-img {
-        width: 70% !important;
+        width: 100% !important;
     }
 }

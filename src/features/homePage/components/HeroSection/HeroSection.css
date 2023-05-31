@@ -54,7 +54,7 @@
     }
 
     .herosec-headers {
-        width: 58% !important;
+        width: 110% !important;
         gap: 20px !important;
     }
 
@@ -71,7 +71,7 @@
         width: 220px !important;
     }
     .herosec-learn {
-        width: 43% !important;
+        width: 55% !important;
         align-items: center !important;
     }
 }

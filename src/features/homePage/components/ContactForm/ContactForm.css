@@ -19,14 +19,27 @@
     .contact-headers h2 {
         font-size: 13px !important;
     }
+
+    .contactform-form {
+        display: flex !important;
+        justify-content: center !important;
+        width: 110% !important;
+        align-items: center !important;
+    }
 }
 
 @media screen and (max-width: 300px) {
     .contact-headers {
-        width: 55% !important;
+        text-align: left !important;
+        align-items: flex-start !important;
+        width: 90% !important;
     }
 
     .contact-form .ant-form-vertical .ant-form-item .ant-form-item-control {
         width: 230px !important;
+    }
+
+    .contactform-form {
+        width: 225px !important;
     }
 }
