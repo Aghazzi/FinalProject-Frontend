@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
     ContactForm,
     HeroSection,
@@ -6,8 +6,19 @@ import {
     Stats,
     VolContent,
 } from "../components";
+import { useLocation } from "react-router-dom";
 
 export const HomePageLanding = () => {
+    const location = useLocation();
+    console.log(location);
+    useEffect(() => {
+        if (location.hash === "#contactform") {
+            window.scrollTo({
+                top: 3200,
+                behavior: "smooth",
+            });
+        }
+    }, [location]);
     return (
         <div>
             <HeroSection />

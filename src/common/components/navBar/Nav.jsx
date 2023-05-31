@@ -134,7 +134,7 @@ export const Nav = () => {
                             </Link>
                         </li> */}
                         <li>
-                            <a href="#contactform" onClick={toggleMenu}>
+                            <a href="/#contactform" onClick={toggleMenu}>
                                 Contact
                             </a>
                         </li>

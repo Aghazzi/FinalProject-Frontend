@@ -16,6 +16,7 @@ export const AppRouter = () => {
             {/* <Route path="/" element={<JobList/>}/> */}
             <Route path="/" element={<HomePageLanding />} />
             <Route path="/search-jobs" element={<SearchForJobLanding />} />
+            <Route path="/#contactform" element={<HomePageLanding />} />
             <Route path="/signin" element={<Signin />} />
             <Route path="/signupcard" element={<SignupLanding />} />
             <Route path="/signupform-vol" element={<Signup />} />
