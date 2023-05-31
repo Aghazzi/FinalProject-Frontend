@@ -43,6 +43,7 @@ export const SearchJobForm = ({ onSearch, searchResults }) => {
                     onChange={handleChange}
                     style={{
                         height: "50px",
+                        paddingLeft: "10px",
                     }}
                 />
             </div>
