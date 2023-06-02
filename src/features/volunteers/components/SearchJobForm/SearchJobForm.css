@@ -16,7 +16,7 @@
         display: flex !important;
         flex-direction: column !important;
         width: 300px !important;
-        height: 250px !important;
+        height: 300px !important;
     }
     .jobform-main input {
         width: 210px !important;
