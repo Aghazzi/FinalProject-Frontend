@@ -92,14 +92,17 @@ export const Nav = () => {
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link to="#" onClick={toggleMenu}>
+                                    <Link
+                                        to="/search-orgs"
+                                        onClick={toggleMenu}
+                                    >
                                         Search Organizations
                                         <i className="fas fa-caret-down"></i>
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link to="#" onClick={toggleMenu}>
-                                        Tangelos
+                                    <Link to="/profile" onClick={toggleMenu}>
+                                        Profile
                                     </Link>
                                 </li>
                             </ul>

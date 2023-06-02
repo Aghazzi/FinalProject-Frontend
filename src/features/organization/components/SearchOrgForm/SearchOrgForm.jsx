@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { Card } from "antd";
 import { Pagination } from "antd";
-import "./SearchJobForm.css";
 
-export const SearchJobForm = ({ onSearch, searchResults }) => {
+export const SearchOrgForm = ({ onSearch, searchResults }) => {
     const [searchQuery, setSearchQuery] = useState("");
 
     const handleChange = (e) => {
@@ -35,7 +34,7 @@ export const SearchJobForm = ({ onSearch, searchResults }) => {
                     width: "73%",
                 }}
             >
-                <h1>All Projects</h1>
+                <h1>All Organizations</h1>
                 <input
                     type="text"
                     placeholder="  Search all"
@@ -75,15 +74,16 @@ export const SearchJobForm = ({ onSearch, searchResults }) => {
                             style={{
                                 display: "flex",
                                 flexDirection: "column",
-                                gap: "10px",
+                                gap: "8px",
                             }}
                         >
                             <p>{result.description}</p>
                             <p>Status: {result.status}</p>
-                            <p>Start Date</p>
-                            <p>End Date</p>
-                            <p>Required Skills</p>
-                            <p>Schedule</p>
+                            <p>Email</p>
+                            <p>Country</p>
+                            <p>Support Name</p>
+                            <p>Support Email</p>
+                            <p>Support Phone</p>
                         </div>
                     </Card>
                 ))}

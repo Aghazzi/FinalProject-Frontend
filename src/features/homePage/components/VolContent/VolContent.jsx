@@ -36,7 +36,11 @@ export const VolContent = () => {
                         justifyContent: "center",
                     }}
                 >
-                    <img src={VolIamge} alt="NewsImage" />
+                    <img
+                        src={VolIamge}
+                        alt="NewsImage"
+                        style={{ objectFit: "contain" }}
+                    />
                 </div>
                 <div
                     className="orgContent-headers"

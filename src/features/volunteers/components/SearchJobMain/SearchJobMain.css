@@ -6,7 +6,7 @@
         flex-direction: column !important;
         align-items: flex-start !important;
         padding-left: 30px !important;
-        background-color: rgba(233, 229, 229, 0.05) !important;
+        background-color: rgba(233, 229, 229, 0.02) !important;
         color: var(--accent2-color);
         margin-left: 20px !important;
     }

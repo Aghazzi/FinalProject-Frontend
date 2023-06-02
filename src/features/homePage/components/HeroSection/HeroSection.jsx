@@ -98,15 +98,18 @@ export const HeroSection = () => {
                                 height: "150px",
                                 justifyContent: "center",
                                 alignItems: "center",
+                                animation: "fadeIn 1s ease-in-out",
+                                paddingRight: "10px",
                             }}
+                            className="hover-card"
                             cover={
                                 <img
                                     alt="example"
                                     src="https://det2iec3jodwn.cloudfront.net/images/responsive/login/illustration-volunteer.svg?v=410560"
                                     style={{
                                         width: "70px",
-                                        transform: "none",
                                     }}
+                                    className="hover-image"
                                 />
                             }
                         >
@@ -133,15 +136,17 @@ export const HeroSection = () => {
                                 justifyContent: "center",
                                 alignItems: "center",
                                 paddingRight: "10px",
+                                animation: "fadeIn 1s ease-in-out",
                             }}
+                            className="hover-card"
                             cover={
                                 <img
                                     alt="example"
                                     src="https://det2iec3jodwn.cloudfront.net/images/responsive/login/illustration-organization.svg?v=410560"
                                     style={{
                                         width: "70px",
-                                        transform: "none",
                                     }}
+                                    className="hover-image"
                                 />
                             }
                         >

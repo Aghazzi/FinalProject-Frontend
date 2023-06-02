@@ -1,11 +1,11 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
-import { SearchJobEnding, SearchJobForm, SearchJobMain } from "../components";
+import { SearchOrgForm, SearchOrgMain } from "../components";
 
-export const SearchForJobLanding = () => {
+export const SearchOrgLanding = () => {
     const [searchResults, setSearchResults] = useState([]);
     const [searchQuery, setSearchQuery] = useState("");
-    const [jobs, setjobs] = useState([
+    const [orgs, setOrgs] = useState([
         {
             id: 1,
             title: "Job 1",
@@ -63,12 +63,12 @@ export const SearchForJobLanding = () => {
     ]);
 
     useEffect(() => {
-        setSearchResults(jobs);
-    }, [jobs]);
+        setSearchResults(orgs);
+    }, [orgs]);
 
     const handleSearch = (query) => {
         setSearchQuery(query);
-        const filteredResults = jobs.filter((item) => {
+        const filteredResults = orgs.filter((item) => {
             const { title, description, status } = item;
             const lowerCaseQuery = query.toLowerCase();
 
@@ -81,15 +81,13 @@ export const SearchForJobLanding = () => {
 
         setSearchResults(filteredResults);
     };
-
     return (
         <div style={{ width: "100%" }}>
-            <SearchJobMain />
-            <SearchJobForm
+            <SearchOrgMain />
+            <SearchOrgForm
                 onSearch={handleSearch}
                 searchResults={searchResults}
             />
-            <SearchJobEnding />
         </div>
     );
 };

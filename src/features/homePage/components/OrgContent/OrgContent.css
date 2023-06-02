@@ -13,6 +13,7 @@
         width: 100% !important;
     }
     .orgContent-img {
+        object-fit: contain !important;
         width: 105% !important;
     }
     .orgContent-learn {
@@ -42,6 +43,7 @@
     }
 
     .orgContent-img img {
+        object-fit: contain !important;
         height: 150px !important;
         width: 280px !important;
     }

@@ -28,13 +28,13 @@ export const Signup = () => {
         onSuccess: (data) => {
             console.log("ok", data);
             setUser(data);
-            localStorage.setItem("isLoggedIn", "true");
+            // localStorage.setItem("isLoggedIn", "true");
             queryClient.invalidateQueries("register");
-            if (data && data.data.user) {
-                navigate("/");
-            } else {
-                //todo
-            }
+            navigate("/signin");
+            // if (data && data.data.user) {
+            // } else {
+            //     //todo
+            // }
         },
     });
 
