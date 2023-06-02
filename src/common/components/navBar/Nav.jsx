@@ -101,7 +101,10 @@ export const Nav = () => {
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link to="/profile" onClick={toggleMenu}>
+                                    <Link
+                                        to="/profile-vol"
+                                        onClick={toggleMenu}
+                                    >
                                         Profile
                                     </Link>
                                 </li>
@@ -114,21 +117,27 @@ export const Nav = () => {
                             </Link>
                             <ul className="sub-menu">
                                 <li>
-                                    <Link to="#" onClick={toggleMenu}>
-                                        Yellow Oranges
+                                    <Link
+                                        to="/org-post-project"
+                                        onClick={toggleMenu}
+                                    >
+                                        Post a Project
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link to="#" onClick={toggleMenu}>
-                                        Green Oranges
+                                    <Link to="/search-vol" onClick={toggleMenu}>
+                                        Search Volunteers
                                         <i className="fas fa-caret-down"></i>
                                     </Link>
                                 </li>
-                                <li>
-                                    <Link to="#" onClick={toggleMenu}>
-                                        Dinner
+                                {/* <li>
+                                    <Link
+                                        to="/profile-org"
+                                        onClick={toggleMenu}
+                                    >
+                                        Profile
                                     </Link>
-                                </li>
+                                </li> */}
                             </ul>
                         </li>
                         {/* <li>
