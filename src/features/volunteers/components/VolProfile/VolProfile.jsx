@@ -1,9 +1,11 @@
 import { UserOutlined } from "@ant-design/icons";
 import { Avatar, Space } from "antd";
+import "./VolProfile.css";
 
 export const VolProfile = () => {
     return (
         <div
+            className="volProfile-container"
             style={{
                 display: "flex",
                 flexDirection: "row",
@@ -12,10 +14,11 @@ export const VolProfile = () => {
                 alignItems: "center",
                 padding: "30px",
                 background: "var(--accent3-color)",
-                gap: "100px",
+                gap: "80px",
             }}
         >
             <div
+                className="volprofile-left"
                 style={{
                     display: "flex",
                     flexDirection: "row",
@@ -27,10 +30,11 @@ export const VolProfile = () => {
                 </Space>
 
                 <div
+                    className="volprofile-left-headers"
                     style={{
                         display: "flex",
                         flexDirection: "column",
-                        gap: "50px",
+                        gap: "40px",
                     }}
                 >
                     <div>
@@ -42,20 +46,22 @@ export const VolProfile = () => {
                     </div>
                 </div>
             </div>
-            <div
-                style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "30px",
-                }}
-            >
-                <div>
-                    <h1>Jobs Applied</h1>
-                    <p style={{ fontSize: "15px" }}>0</p>
-                </div>
-                <div>
-                    <h2>Status</h2>
-                    <p style={{ fontSize: "15px" }}>Ready to volunteer</p>
+            <div className="volprofile-left-headers">
+                <div
+                    style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: "15px",
+                    }}
+                >
+                    <div>
+                        <h1>Jobs Applied</h1>
+                        <p style={{ fontSize: "15px" }}>0</p>
+                    </div>
+                    <div>
+                        <h2>Status</h2>
+                        <p style={{ fontSize: "15px" }}>Ready to volunteer</p>
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,8 +1,10 @@
 import React from "react";
+import "./VolProfileMain.css";
 
 export const VolProfileMain = () => {
     return (
         <div
+            className="volprofilemain-container"
             style={{
                 display: "flex",
                 flexDirection: "column",
@@ -23,6 +25,7 @@ export const VolProfileMain = () => {
                 <h1 style={{ fontSize: "25px" }}>About</h1>
             </div>
             <div
+                className="volprofile-exp"
                 style={{
                     display: "flex",
                     flexDirection: "column",
@@ -44,7 +47,7 @@ export const VolProfileMain = () => {
                     voluptatibus nihil consequuntur ab aliquid.
                 </p>
             </div>
-            <div
+            <div className="volprofile-inter"
                 style={{
                     display: "flex",
                     flexDirection: "column",

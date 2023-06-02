@@ -1,0 +1,26 @@
+@media screen and (max-width: 990px) {
+    .volProfile-container {
+        gap: 20px !important;
+    }
+
+    .volprofile-left {
+        gap: 20px !important;
+    }
+
+    .volprofile-left-headers {
+        gap: 30px !important;
+        justify-content: center !important;
+    }
+
+    .volprofile-left-headers h1 {
+        font-size: 14px !important;
+    }
+
+    .volprofile-left-headers h2 {
+        font-size: 10px !important;
+    }
+
+    .volprofile-left-headers p {
+        font-size: 10px !important;
+    }
+}
