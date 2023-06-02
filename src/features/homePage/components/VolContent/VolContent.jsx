@@ -70,6 +70,7 @@ export const VolContent = () => {
                     </h2>
                     <div>
                         <Link
+                            to="/search-vol"
                             className="move-right2 btn"
                             style={{
                                 color: "var(--accent2-color)",

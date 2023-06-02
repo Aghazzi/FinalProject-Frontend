@@ -55,6 +55,7 @@ export const OrgContent = () => {
                     </h2>
                     <div className="orgContent-learn">
                         <Link
+                            to="/search-orgs"
                             className="move-right1 btn"
                             style={{
                                 color: "var(--accent2-color)",

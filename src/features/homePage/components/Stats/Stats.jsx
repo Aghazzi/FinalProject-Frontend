@@ -90,6 +90,7 @@ export const Stats = () => {
             </div>
             <div className="stats-latest">
                 <Link
+                    to="/search-jobs"
                     className="move-right1 btn "
                     style={{
                         fontSize: "17px",
