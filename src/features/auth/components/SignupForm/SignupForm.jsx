@@ -1,4 +1,4 @@
-import { Button, Form, Col, Input, Row } from "antd";
+import { Button, Form, Col, Input, Row, Select } from "antd";
 import "./SignupForm.css";
 import React from "react";
 
@@ -6,6 +6,11 @@ const { Item } = Form;
 const { Password } = Input;
 
 export const SignupForm = ({ onFinish, formValues }) => {
+    const options = [
+        { value: "option1", label: "Option 1" },
+        { value: "option2", label: "Option 2" },
+        { value: "option3", label: "Option 3" },
+    ];
     const [form] = Form.useForm();
 
     React.useEffect(() => {
@@ -22,7 +27,7 @@ export const SignupForm = ({ onFinish, formValues }) => {
                         rules={[
                             {
                                 pattern: new RegExp(
-                                    /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+                                    /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
                                 ),
                                 message: "Email is invalid",
                             },
@@ -42,7 +47,7 @@ export const SignupForm = ({ onFinish, formValues }) => {
                         rules={[
                             {
                                 pattern: new RegExp(
-                                    /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]).{8,}$/
+                                    /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]).{8,}$/,
                                 ),
                                 message: "Password is too weak",
                             },
@@ -113,6 +118,16 @@ export const SignupForm = ({ onFinish, formValues }) => {
                 </Row>
                 <Row>
                     <Item label="Experience" name="experience">
+                        <Select mode="multiple">
+                            {options.map((option) => (
+                                <Select.Option
+                                    key={option.value}
+                                    value={option.value}
+                                >
+                                    {option.label}
+                                </Select.Option>
+                            ))}
+                        </Select>
                         <Input />
                     </Item>
                 </Row>
