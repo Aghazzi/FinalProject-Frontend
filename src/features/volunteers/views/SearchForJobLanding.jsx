@@ -23,7 +23,6 @@ export const SearchForJobLanding = () => {
     } = useQuery(["job", currentPage, limit], () =>
         getJobs(currentPage, limit)
     );
-    console.log(data);
     const [anError, setAnError] = useState();
 
     const handleApply = (jobId) => {
@@ -65,7 +64,6 @@ export const SearchForJobLanding = () => {
             });
         },
         onError: (err) => {
-            console.log(err);
             Swal.fire({
                 icon: "error",
                 title: "Oops...",

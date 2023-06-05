@@ -13,8 +13,6 @@ export const SignupOrg = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const role = location.state?.role || "";
-    console.log(location.state?.role);
-    console.log("hi", role);
 
     const {
         mutate: mutateRegister,
@@ -24,7 +22,6 @@ export const SignupOrg = () => {
     } = useMutation(registerApi, {
         mutationKey: ["register"],
         onSuccess: (data) => {
-            console.log("ok", data);
             setUser(data);
             localStorage.setItem("isLoggedIn", "true");
             queryClient.invalidateQueries("register");

@@ -20,6 +20,5 @@ export const deleteJob = async (id) => {
 };
 
 export const applyJob = async (_id) => {
-    console.log("jobIdQuery:", _id);
     return await apiInstance.post(`/user/apply/${_id}`, _id);
 };

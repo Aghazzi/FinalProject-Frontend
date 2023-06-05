@@ -5,17 +5,14 @@ export const apiInstance = axios.create({
 });
 
 apiInstance.interceptors.request.use((req) => {
-    console.log(`${req.method} ${req.url}`);
     const authToken = getCookie("authToken");
     if (authToken) {
-        console.log("AuthToken:", authToken);
         req.headers["Authorization"] = `Bearer ${authToken}`;
     }
     return req;
 });
 
 apiInstance.interceptors.response.use((req) => {
-    console.log(req);
     //you can also log to any logging service here like SPLUNK etc
     return req;
 });

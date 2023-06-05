@@ -24,12 +24,10 @@ export const Signin = () => {
     } = useMutation(loginApi, {
         mutationKey: ["auth"],
         onSuccess: (data) => {
-            console.log("signin", data.data.message);
             const token = data.data.authToken;
             setCookie("authToken", token);
             setCookie("user", data.data.user);
             setUser(data.data.user);
-            console.log(data.data.user);
             queryClient.invalidateQueries("auth");
 
             navigate("/");

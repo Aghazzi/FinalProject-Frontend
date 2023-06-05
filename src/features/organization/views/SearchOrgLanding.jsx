@@ -22,7 +22,6 @@ export const SearchOrgLanding = () => {
     } = useQuery(["org", currentPage, limit], () =>
         getOrgs(currentPage, limit)
     );
-    console.log(data);
 
     const handleSearch = (query) => {
         setSearchQuery(query);

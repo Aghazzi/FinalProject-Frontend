@@ -13,8 +13,6 @@ export const Signup = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const role = location.state?.role || "";
-    console.log(location.state?.role);
-    console.log("role", role);
 
     const [formValues, setFormValues] = useState({});
 
@@ -26,15 +24,9 @@ export const Signup = () => {
     } = useMutation(registerApi, {
         mutationKey: ["register"],
         onSuccess: (data) => {
-            console.log("ok", data);
             setUser(data);
-            // localStorage.setItem("isLoggedIn", "true");
             queryClient.invalidateQueries("register");
             navigate("/signin");
-            // if (data && data.data.user) {
-            // } else {
-            //     //todo
-            // }
         },
     });
 

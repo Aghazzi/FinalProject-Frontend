@@ -19,7 +19,6 @@ export const Nav = () => {
     const queryClient = new QueryClient();
     const [cookies, setCookie, removeCookie] = useCookies(["user"]);
     const userRole = user?.role;
-    console.log(userRole);
 
     const {
         mutate: mutateLogout,
@@ -29,7 +28,6 @@ export const Nav = () => {
     } = useMutation(logoutApi, {
         mutationKey: ["logout"],
         onSuccess: (data) => {
-            console.log("logout", data.data.message);
             setUser(null);
             removeCookie("user");
             removeCookie("authToken");

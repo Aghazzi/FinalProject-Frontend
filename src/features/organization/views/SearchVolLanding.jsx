@@ -23,7 +23,6 @@ export const SearchVolLanding = () => {
     } = useQuery(["vol", currentPage, limit], () =>
         getVols(currentPage, limit)
     );
-    console.log(data);
 
     const handleSearch = (query) => {
         setSearchQuery(query);

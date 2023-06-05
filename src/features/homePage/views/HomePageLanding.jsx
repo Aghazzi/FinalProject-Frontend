@@ -10,7 +10,6 @@ import { useLocation } from "react-router-dom";
 
 export const HomePageLanding = () => {
     const location = useLocation();
-    console.log(location);
     useEffect(() => {
         if (location.hash === "#contactform") {
             window.scrollTo({

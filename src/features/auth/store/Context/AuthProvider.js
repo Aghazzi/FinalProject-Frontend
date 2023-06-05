@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import Cookies from "universal-cookie";
 import { useEffect } from "react";
@@ -11,7 +12,6 @@ export const AuthProvider = ({ children }) => {
         const cookies = new Cookies();
         const myCookieValue = cookies.get("user");
         setUser(cookies.get("user"));
-        console.log("Cookie value:", myCookieValue);
     }, []);
 
     return (
