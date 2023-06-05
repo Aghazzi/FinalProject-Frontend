@@ -4,7 +4,7 @@ import { SigninForm } from "../components";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../store/Context/AuthProvider";
 import { QueryClient, useMutation } from "react-query";
-import { loginApi } from "../store/authApi";
+import { getUserById, loginApi } from "../store/authApi";
 import { Loader } from "../../../common/components/Loader/Loader";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
@@ -25,9 +25,13 @@ export const Signin = () => {
         mutationKey: ["auth"],
         onSuccess: (data) => {
             console.log("signin", data.data.message);
-            setUser(data);
-            setCookie("user", data);
+            const token = data.data.authToken;
+            setCookie("authToken", token);
+            setCookie("user", data.data.user);
+            setUser(data.data.user);
+            console.log(data.data.user);
             queryClient.invalidateQueries("auth");
+
             navigate("/");
             Swal.fire({
                 position: "center",

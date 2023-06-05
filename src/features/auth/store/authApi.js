@@ -25,3 +25,8 @@ export const getOrgs = async (currentPage, limit) => {
     );
     return response.data;
 };
+
+export const getUserById = async (id) => {
+    const response = await apiInstance.get(`/user/user/${id}`, id);
+    return response.data;
+};

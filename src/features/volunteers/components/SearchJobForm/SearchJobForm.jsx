@@ -72,7 +72,9 @@ export const SearchJobForm = ({
             >
                 {jobData.map((data, index) => (
                     <button
-                        onClick={() => jobApply(data.id)}
+                        onClick={() => {
+                            jobApply(data?._id);
+                        }}
                         key={index}
                         style={{ border: "none" }}
                     >

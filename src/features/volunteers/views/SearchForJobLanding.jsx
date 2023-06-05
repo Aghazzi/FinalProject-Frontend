@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { SearchJobEnding, SearchJobForm, SearchJobMain } from "../components";
 import { AuthContext } from "../../auth/store/Context/AuthProvider";
 import { QueryClient, useMutation, useQuery } from "react-query";
-import { addJob, getJobs } from "../../auth/store/jobApi";
+import { addJob, applyJob, getJobs } from "../../auth/store/jobApi";
 import { Loader } from "../../../common/components";
 import Swal from "sweetalert2";
 
@@ -11,7 +11,7 @@ export const SearchForJobLanding = () => {
     const [searchResults, setSearchResults] = useState([]);
     const [searchQuery, setSearchQuery] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
-    const { user, setUser } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
     const queryClient = new QueryClient();
     const limit = 12;
 
@@ -24,46 +24,49 @@ export const SearchForJobLanding = () => {
         getJobs(currentPage, limit)
     );
     console.log(data);
+    const [anError, setAnError] = useState();
 
     const handleApply = (jobId) => {
-        addJobs.mutate(jobId);
+        Swal.fire({
+            title: "Would you like to apply for this job?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, I'd like to apply!",
+            cancelButtonText: "No, cancel!",
+            reverseButtons: true,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                apply(jobId);
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+                Swal.fire(
+                    "Cancelled",
+                    "Your imaginary file is safe :)",
+                    "error"
+                );
+            }
+        });
     };
 
-    const addJobs = useMutation(addJob, {
+    const {
+        mutate: apply,
+        isLoading: applyJobLoading,
+        isError: isErrorApplyJob,
+        error: errorApplyJob,
+    } = useMutation(applyJob, {
         onSuccess: () => {
             queryClient.invalidateQueries("jobs");
-            Swal.fire({
-                title: "Would you like to apply for this job?",
-                text: "You won't be able to revert this!",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonText: "Yes, I'd like to apply!",
-                cancelButtonText: "No, cancel!",
-                reverseButtons: true,
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    addJobs.mutate();
-                } else if (result.dismiss === Swal.DismissReason.cancel) {
-                    Swal.fire(
-                        "Cancelled",
-                        "Your imaginary file is safe :)",
-                        "error"
-                    );
-                }
-            });
         },
-    });
-
-    useEffect(() => {
-        if (isError) {
+        onError: (err) => {
+            console.log(err);
             Swal.fire({
                 icon: "error",
                 title: "Oops...",
                 text: "Something went wrong!",
-                footer: `${error.response.data.message}`,
+                footer: err.response.data.message,
             });
-        }
-    }, [isError, error]);
+        },
+    });
 
     const handleSearch = (query) => {
         setSearchQuery(query);

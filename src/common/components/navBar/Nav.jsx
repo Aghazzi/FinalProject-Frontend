@@ -30,6 +30,7 @@ export const Nav = () => {
             console.log("logout", data.data.message);
             setUser(null);
             removeCookie("user");
+            removeCookie("authToken");
             setIsLoggedIn(false);
             queryClient.invalidateQueries("logout");
             Swal.fire({
