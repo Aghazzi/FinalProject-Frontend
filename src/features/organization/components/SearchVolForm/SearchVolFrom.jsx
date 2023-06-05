@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Card } from "antd";
 import { Pagination } from "antd";
 
-export const SearchVolForm = ({ onSearch, searchResults }) => {
+export const SearchVolForm = ({ onSearch, searchResults = [] }) => {
     const [searchQuery, setSearchQuery] = useState("");
 
     const handleChange = (e) => {
@@ -57,9 +57,9 @@ export const SearchVolForm = ({ onSearch, searchResults }) => {
                     textAlign: "flex-start",
                 }}
             >
-                {searchResults.map((result) => (
+                {searchResults.map((result, index) => (
                     <Card
-                        key={result.id}
+                        key={index}
                         title={result.title}
                         style={{
                             width: 300,
@@ -87,7 +87,7 @@ export const SearchVolForm = ({ onSearch, searchResults }) => {
                     </Card>
                 ))}
             </div>
-            <Pagination defaultCurrent={1} total={50} />
+            <Pagination />
         </div>
     );
 };

@@ -11,3 +11,10 @@ export const registerApi = async (data) => {
 export const logoutApi = async () => {
     return await apiInstance.post("/user/logout");
 };
+
+export const getVols = async (currentPage) => {
+    const response = await apiInstance.get(`/user/users`);
+    return response.data;
+};
+
+// list?page=${currentPage}

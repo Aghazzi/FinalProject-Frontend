@@ -1,75 +1,33 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { SearchVolMain } from "../components/SearchVolMain/SearchVolMain";
 import { SearchVolForm } from "../components/SearchVolForm/SearchVolFrom";
+import { AuthContext } from "../../auth/store/Context/AuthProvider";
+import { QueryClient, useMutation, useQuery } from "react-query";
+import { useNavigate } from "react-router-dom";
+import { useCookies } from "react-cookie";
+import { getVols } from "../../auth/store/authApi";
+import { apiInstance } from "../../../services";
 
 export const SearchVolLanding = () => {
     const [searchResults, setSearchResults] = useState([]);
     const [searchQuery, setSearchQuery] = useState("");
-    const [vol, setVol] = useState([
-        {
-            id: 1,
-            title: "Job 1",
-            description: "Job 1 Description",
-            status: "Open",
-        },
-        {
-            id: 3,
-            title: "Job 2",
-            description: "Job 2 Description",
-            status: "Closed",
-        },
-        {
-            id: 4,
-            title: "Job 2",
-            description: "Job 2 Description",
-            status: "Closed",
-        },
-        {
-            id: 2,
-            title: "Job 2",
-            description: "Job 2 Description",
-            status: "Closed",
-        },
-        {
-            id: 5,
-            title: "Job 2",
-            description: "Job 2 Description",
-            status: "Closed",
-        },
-        {
-            id: 6,
-            title: "Job 2",
-            description: "Job 2 Description",
-            status: "Closed",
-        },
-        {
-            id: 7,
-            title: "Job 2",
-            description: "Job 2 Description",
-            status: "Closed",
-        },
-        {
-            id: 8,
-            title: "Job 2",
-            description: "Job 2 Descriptions",
-            status: "Closed",
-        },
-        {
-            id: 9,
-            title: "Job 2",
-            description: "Job 2 Description",
-            status: "Closed",
-        },
-    ]);
+    const [currentPage, setCurrentPage] = useState(1);
 
-    useEffect(() => {
-        setSearchResults(vol);
-    }, [vol]);
+    const { user, setUser } = useContext(AuthContext);
+    const queryClient = new QueryClient();
+
+    const {
+        isLoading,
+        isError,
+        error,
+        data = [],
+    } = useQuery(["vol", currentPage], () => getVols(currentPage));
+    console.log(data.pagination);
 
     const handleSearch = (query) => {
         setSearchQuery(query);
-        const filteredResults = vol.filter((item) => {
+        const filteredResults = data.filter((item) => {
             const { title, description, status } = item;
             const lowerCaseQuery = query.toLowerCase();
 
@@ -88,7 +46,9 @@ export const SearchVolLanding = () => {
             <SearchVolMain />
             <SearchVolForm
                 onSearch={handleSearch}
-                searchResults={searchResults}
+                searchResults={data.users}
+                current={data.pagination?.page}
+                total={data.pagination?.totalDocs}
             />
         </div>
     );
