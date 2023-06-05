@@ -10,6 +10,7 @@ export const SearchJobForm = ({
     total,
     onChange,
     jobData,
+    jobApply,
 }) => {
     const [searchQuery, setSearchQuery] = useState("");
 
@@ -70,104 +71,109 @@ export const SearchJobForm = ({
                 }}
             >
                 {jobData.map((data, index) => (
-                    <Card
+                    <button
+                        onClick={() => jobApply(data.id)}
                         key={index}
-                        title={data.title}
-                        style={{
-                            width: 300,
-                            height: 300,
-                            overflow: "hidden",
-                        }}
-                        hoverable
+                        style={{ border: "none" }}
                     >
-                        <div
+                        <Card
+                            key={index}
+                            title={data.title}
                             style={{
-                                display: "flex",
-                                flexDirection: "column",
-                                gap: "10px",
+                                width: 300,
+                                height: 300,
+                                overflow: "hidden",
                             }}
+                            hoverable
                         >
-                            <p
+                            <div
                                 style={{
-                                    overflow: "hidden",
-                                    textOverflow: "ellipsis",
-                                    whiteSpace: "nowrap",
-                                    margin: "0",
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    gap: "10px",
                                 }}
                             >
-                                {data.description}
-                            </p>
-                            <p
-                                style={{
-                                    overflow: "hidden",
-                                    textOverflow: "ellipsis",
-                                    whiteSpace: "nowrap",
-                                    margin: "0",
-                                }}
-                            >
-                                Start Date: {data.startDate}
-                            </p>
-                            <p
-                                style={{
-                                    overflow: "hidden",
-                                    textOverflow: "ellipsis",
-                                    whiteSpace: "nowrap",
-                                    margin: "0",
-                                }}
-                            >
-                                End Date: {data.endDate}
-                            </p>
-                            <p
-                                style={{
-                                    overflow: "hidden",
-                                    textOverflow: "ellipsis",
-                                    whiteSpace: "nowrap",
-                                    margin: "0",
-                                }}
-                            >
-                                Required Skills: {data.requiredSkills}
-                            </p>
-                            <p
-                                style={{
-                                    overflow: "hidden",
-                                    textOverflow: "ellipsis",
-                                    whiteSpace: "nowrap",
-                                    margin: "0",
-                                }}
-                            >
-                                Schedule: {data.schedule}
-                            </p>
-                            <p
-                                style={{
-                                    overflow: "hidden",
-                                    textOverflow: "ellipsis",
-                                    whiteSpace: "nowrap",
-                                    margin: "0",
-                                }}
-                            >
-                                {" "}
-                                <b>
-                                    Status:{" "}
-                                    <span
-                                        style={{
-                                            color:
-                                                data.status === "open"
-                                                    ? "green"
-                                                    : "red",
-                                        }}
-                                    >
-                                        {data.status === "open"
-                                            ? "Open for applying"
-                                            : "Closed"}
-                                    </span>
-                                </b>
-                            </p>
-                        </div>
-                    </Card>
+                                <p
+                                    style={{
+                                        overflow: "hidden",
+                                        textOverflow: "ellipsis",
+                                        whiteSpace: "nowrap",
+                                        margin: "0",
+                                    }}
+                                >
+                                    {data.description}
+                                </p>
+                                <p
+                                    style={{
+                                        overflow: "hidden",
+                                        textOverflow: "ellipsis",
+                                        whiteSpace: "nowrap",
+                                        margin: "0",
+                                    }}
+                                >
+                                    Start Date: {data.startDate}
+                                </p>
+                                <p
+                                    style={{
+                                        overflow: "hidden",
+                                        textOverflow: "ellipsis",
+                                        whiteSpace: "nowrap",
+                                        margin: "0",
+                                    }}
+                                >
+                                    End Date: {data.endDate}
+                                </p>
+                                <p
+                                    style={{
+                                        overflow: "hidden",
+                                        textOverflow: "ellipsis",
+                                        whiteSpace: "nowrap",
+                                        margin: "0",
+                                    }}
+                                >
+                                    Required Skills: {data.requiredSkills}
+                                </p>
+                                <p
+                                    style={{
+                                        overflow: "hidden",
+                                        textOverflow: "ellipsis",
+                                        whiteSpace: "nowrap",
+                                        margin: "0",
+                                    }}
+                                >
+                                    Schedule: {data.schedule}
+                                </p>
+                                <p
+                                    style={{
+                                        overflow: "hidden",
+                                        textOverflow: "ellipsis",
+                                        whiteSpace: "nowrap",
+                                        margin: "0",
+                                    }}
+                                >
+                                    {" "}
+                                    <b>
+                                        Status:{" "}
+                                        <span
+                                            style={{
+                                                color:
+                                                    data.status === "open"
+                                                        ? "green"
+                                                        : "red",
+                                            }}
+                                        >
+                                            {data.status === "open"
+                                                ? "Open for applying"
+                                                : "Closed"}
+                                        </span>
+                                    </b>
+                                </p>
+                            </div>
+                        </Card>
+                    </button>
                 ))}
             </div>
             <Pagination
-                d
                 current={current}
                 total={total}
                 onChange={handlePageChange}

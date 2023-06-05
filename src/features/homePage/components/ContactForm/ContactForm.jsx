@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Form, Input } from "antd";
 import "./ContactForm.css";
 import emailjs from "@emailjs/browser";
+import Swal from "sweetalert2";
 
 const layout = {
     labelCol: {
@@ -36,6 +37,13 @@ export const ContactForm = () => {
                     )
                     .then((result) => {
                         console.log(result.text);
+                        Swal.fire({
+                            position: "center",
+                            icon: "success",
+                            title: "Thank you for contacting us, we'll get back to you shortly!",
+                            showConfirmButton: false,
+                            timer: 1500,
+                        });
                     })
                     .catch((error) => {
                         console.log(error.text);

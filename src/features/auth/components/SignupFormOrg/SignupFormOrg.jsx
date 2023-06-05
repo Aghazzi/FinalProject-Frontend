@@ -4,12 +4,9 @@ import "./SignupFormOrg.css";
 const { Item } = Form;
 const { Password } = Input;
 
-export const SignupFormOrg = ({onFinish}) => {
+export const SignupFormOrg = ({ onFinish }) => {
     const [form] = Form.useForm();
-    // const handleSubmit = (values) => {
-    //     console.log(values);
-    //     form.resetFields();
-    // };
+
     return (
         <Form onFinish={onFinish} form={form} layout="vertical">
             <Col>
@@ -43,7 +40,6 @@ export const SignupFormOrg = ({onFinish}) => {
                                 message: "Email is Required",
                             },
                         ]}
-                        // normalize={(value, prevVal, prevVals) => value.trim()}
                     >
                         <Input />
                     </Item>

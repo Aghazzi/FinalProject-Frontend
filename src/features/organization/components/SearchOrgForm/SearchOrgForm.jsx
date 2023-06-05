@@ -77,7 +77,7 @@ export const SearchOrgForm = ({
                             height: 300,
                             overflow: "hidden",
                         }}
-                        hoverable
+                        hoverable={false}
                     >
                         <div
                             style={{
