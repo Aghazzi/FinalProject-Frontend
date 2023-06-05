@@ -6,6 +6,7 @@ import { QueryClient, useMutation } from "react-query";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Loader } from "../../../common/components";
 import { registerApi } from "../store/authApi";
+import Swal from "sweetalert2";
 
 export const Signup = () => {
     const { user, setUser } = useContext(AuthContext);
@@ -24,9 +25,16 @@ export const Signup = () => {
     } = useMutation(registerApi, {
         mutationKey: ["register"],
         onSuccess: (data) => {
-            setUser(data);
+            setUser(null);
             queryClient.invalidateQueries("register");
             navigate("/signin");
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Registered successfully, log in please!",
+                showConfirmButton: false,
+                timer: 1500,
+            });
         },
     });
 

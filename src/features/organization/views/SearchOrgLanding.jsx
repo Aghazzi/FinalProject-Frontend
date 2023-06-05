@@ -25,13 +25,13 @@ export const SearchOrgLanding = () => {
 
     const handleSearch = (query) => {
         setSearchQuery(query);
-        const filteredResults = searchResults.filter((item) => {
-            const { title, description, status } = item;
+
+        const filteredResults = data.organizations.filter((item) => {
+            const { title, status } = item;
             const lowerCaseQuery = query.toLowerCase();
 
             return (
                 title?.toLowerCase().includes(lowerCaseQuery) ||
-                description?.toLowerCase().includes(lowerCaseQuery) ||
                 status?.toLowerCase().includes(lowerCaseQuery)
             );
         });
@@ -39,29 +39,27 @@ export const SearchOrgLanding = () => {
         setSearchResults(filteredResults);
     };
 
-    if (isLoading)
-        return (
-            <>
-                <div
-                    style={{
-                        width: "10%",
-                    }}
-                ></div>
-                <Loader />;
-            </>
-        );
-
     return (
         <div style={{ width: "100%" }}>
             <SearchOrgMain />
-            <SearchOrgForm
-                onSearch={handleSearch}
-                searchResults={searchResults}
-                onChange={(page) => setCurrentPage((nextPage) => page)}
-                current={currentPage}
-                total={data.pagination?.totalDocs}
-                orgData={data.organizations}
-            />
+            {isLoading ? (
+                <div
+                    style={{
+                        width: "130%",
+                    }}
+                >
+                    <Loader />
+                </div>
+            ) : (
+                <SearchOrgForm
+                    onSearch={handleSearch}
+                    searchResults={searchResults}
+                    onChange={(page) => setCurrentPage((nextPage) => page)}
+                    current={currentPage}
+                    total={data.pagination?.totalDocs}
+                    orgData={data.organizations}
+                />
+            )}
         </div>
     );
 };

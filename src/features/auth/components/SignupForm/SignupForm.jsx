@@ -1,4 +1,4 @@
-import { Button, Form, Col, Input, Row, Select } from "antd";
+import { Button, Form, Col, Input, Row } from "antd";
 import "./SignupForm.css";
 import React from "react";
 
@@ -6,11 +6,11 @@ const { Item } = Form;
 const { Password } = Input;
 
 export const SignupForm = ({ onFinish, formValues }) => {
-    const options = [
-        { value: "option1", label: "Option 1" },
-        { value: "option2", label: "Option 2" },
-        { value: "option3", label: "Option 3" },
-    ];
+    // const options = [
+    //     { value: "option1", label: "Option 1" },
+    //     { value: "option2", label: "Option 2" },
+    //     { value: "option3", label: "Option 3" },
+    // ];
     const [form] = Form.useForm();
 
     React.useEffect(() => {
@@ -116,7 +116,7 @@ export const SignupForm = ({ onFinish, formValues }) => {
                         <Input />
                     </Item>
                 </Row>
-                <Row>
+                {/* <Row>
                     <Item label="Experience" name="experience">
                         <Select mode="multiple">
                             {options.map((option) => (
@@ -130,7 +130,7 @@ export const SignupForm = ({ onFinish, formValues }) => {
                         </Select>
                         <Input />
                     </Item>
-                </Row>
+                </Row> */}
                 <Row>
                     <Item
                         label="Interests"

@@ -40,29 +40,27 @@ export const SearchVolLanding = () => {
         setSearchResults(filteredResults);
     };
 
-    if (isLoading)
-        return (
-            <>
-                <div
-                    style={{
-                        width: "10%",
-                    }}
-                ></div>
-                <Loader />;
-            </>
-        );
-
     return (
         <div style={{ width: "100%" }}>
             <SearchVolMain />
-            <SearchVolForm
-                onSearch={handleSearch}
-                searchResults={searchResults}
-                onChange={(page) => setCurrentPage((nextPage) => page)}
-                current={currentPage}
-                total={data.pagination?.totalDocs}
-                userData={data.users}
-            />
+            {isLoading ? (
+                <div
+                    style={{
+                        width: "130%",
+                    }}
+                >
+                    <Loader />
+                </div>
+            ) : (
+                <SearchVolForm
+                    onSearch={handleSearch}
+                    searchResults={searchResults}
+                    onChange={(page) => setCurrentPage((nextPage) => page)}
+                    current={currentPage}
+                    total={data.pagination?.totalDocs}
+                    userData={data.users}
+                />
+            )}
         </div>
     );
 };
