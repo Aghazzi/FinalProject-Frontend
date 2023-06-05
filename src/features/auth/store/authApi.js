@@ -12,9 +12,16 @@ export const logoutApi = async () => {
     return await apiInstance.post("/user/logout");
 };
 
-export const getVols = async (currentPage) => {
-    const response = await apiInstance.get(`/user/users`);
+export const getVols = async (currentPage, limit) => {
+    const response = await apiInstance.get(
+        `/user/users?page=${currentPage}&limit=${limit}`
+    );
     return response.data;
 };
 
-// list?page=${currentPage}
+export const getOrgs = async (currentPage, limit) => {
+    const response = await apiInstance.get(
+        `/user/organizations?page=${currentPage}&limit=${limit}`
+    );
+    return response.data;
+};

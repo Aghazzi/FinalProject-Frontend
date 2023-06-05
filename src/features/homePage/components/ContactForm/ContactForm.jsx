@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Form, Input } from "antd";
 import "./ContactForm.css";
-// import emailjs from "@emailjs/browser";
+import emailjs from "@emailjs/browser";
 
 const layout = {
     labelCol: {
@@ -21,31 +21,34 @@ const validateMessages = {
 };
 
 const { Item } = Form;
-
 export const ContactForm = () => {
-    // const contactForm = document.getElementById("contact--form");
-    // const contactForms = useRef();
-
     const [form] = Form.useForm();
-    const onFinish = (values) => {
-        // emailjs
-        //     .sendForm(
-        //         `${process.env.REACT_APP_EMAILJS_SERVICE_ID}`,
-        //         `${process.env.REACT_APP_EMAILJS_TEMPLATE_ID}`,
-        //         contactForm,
-        //         `${process.env.REACT_APP_EMAILJS_PUBLIC_KEY}`
-        //     )
-        //     .then(
-        //         (result) => {
-        //             console.log(result.text);
-        //         },
-        //         (error) => {
-        //             console.log(error.text);
-        //         }
-        //     );
-        console.log(values);
-        form.resetFields();
+
+    const onFinish = () => {
+        form.validateFields()
+            .then((values) => {
+                emailjs
+                    .send(
+                        `${process.env.REACT_APP_EMAILJS_SERVICE_ID}`,
+                        `${process.env.REACT_APP_EMAILJS_TEMPLATE_ID}`,
+                        values,
+                        `${process.env.REACT_APP_EMAILJS_PUBLIC_KEY}`
+                    )
+                    .then((result) => {
+                        console.log(result.text);
+                    })
+                    .catch((error) => {
+                        console.log(error.text);
+                    })
+                    .finally(() => {
+                        form.resetFields();
+                    });
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     };
+
     return (
         <div
             className="contact-container"
@@ -79,15 +82,13 @@ export const ContactForm = () => {
             </div>
             <div className="contactform-form">
                 <Form
-                    // id="contact--form"
-                    // ref={contactForm}
                     layout="vertical"
                     name="nest-messages"
                     form={form}
-                    onFinish={onFinish}
                     style={{
                         width: "400px",
                     }}
+                    onFinish={onFinish}
                     validateMessages={validateMessages}
                 >
                     <Item

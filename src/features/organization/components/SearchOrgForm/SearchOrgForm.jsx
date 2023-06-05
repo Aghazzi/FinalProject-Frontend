@@ -2,12 +2,23 @@ import React, { useState } from "react";
 import { Card } from "antd";
 import { Pagination } from "antd";
 
-export const SearchOrgForm = ({ onSearch, searchResults }) => {
+export const SearchOrgForm = ({
+    onSearch,
+    searchResults = [],
+    current,
+    total,
+    onChange,
+    orgData,
+}) => {
     const [searchQuery, setSearchQuery] = useState("");
 
     const handleChange = (e) => {
         setSearchQuery(e.target.value);
         onSearch(e.target.value);
+    };
+
+    const handlePageChange = (page) => {
+        onChange(page);
     };
 
     return (
@@ -57,14 +68,16 @@ export const SearchOrgForm = ({ onSearch, searchResults }) => {
                     textAlign: "flex-start",
                 }}
             >
-                {searchResults.map((result) => (
+                {orgData.map((data, index) => (
                     <Card
-                        key={result.id}
-                        title={result.title}
+                        key={index}
+                        title={data.orgName}
                         style={{
                             width: 300,
                             height: 300,
                             textAlign: "center",
+                            justifyContent: "center",
+                            alignItems: "center",
                             display: "flex",
                             flexDirection: "column",
                         }}
@@ -77,18 +90,37 @@ export const SearchOrgForm = ({ onSearch, searchResults }) => {
                                 gap: "8px",
                             }}
                         >
-                            <p>{result.description}</p>
-                            <p>Status: {result.status}</p>
-                            <p>Email</p>
-                            <p>Country</p>
-                            <p>Support Name</p>
-                            <p>Support Email</p>
-                            <p>Support Phone</p>
+                            <p>Email: {data.email}</p>
+                            <p>Country: {data.country}</p>
+                            <p>Support Name: {data.contactPersonName}</p>
+                            <p>Support Email: {data.contactPersonEmail}</p>
+                            <p>Support Phone: {data.contactPersonPhone}</p>
+                            <p>Projects Posted: {data.appliedJobs?.length}</p>
+                            <p>
+                                <b>
+                                    Status:{" "}
+                                    <span
+                                        style={{
+                                            color: data.isActive
+                                                ? "green"
+                                                : "red",
+                                        }}
+                                    >
+                                        {data.isActive
+                                            ? "Open vacancies"
+                                            : "No vacancies"}
+                                    </span>
+                                </b>
+                            </p>
                         </div>
                     </Card>
                 ))}
             </div>
-            <Pagination defaultCurrent={1} total={50} />
+            <Pagination
+                current={current}
+                total={total}
+                onChange={handlePageChange}
+            />
         </div>
     );
 };

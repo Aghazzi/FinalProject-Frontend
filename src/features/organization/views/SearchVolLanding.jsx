@@ -11,28 +11,30 @@ export const SearchVolLanding = () => {
     const [searchResults, setSearchResults] = useState([]);
     const [searchQuery, setSearchQuery] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
-
     const { user, setUser } = useContext(AuthContext);
     const queryClient = new QueryClient();
+    const limit = 12;
 
     const {
         isLoading,
         isError,
         error,
         data = [],
-    } = useQuery(["vol", currentPage], () => getVols(currentPage));
-    console.log(data.pagination);
+    } = useQuery(["vol", currentPage, limit], () =>
+        getVols(currentPage, limit)
+    );
+    console.log(data);
 
     const handleSearch = (query) => {
         setSearchQuery(query);
-        const filteredResults = data.filter((item) => {
+        const filteredResults = searchResults.filter((item) => {
             const { title, description, status } = item;
             const lowerCaseQuery = query.toLowerCase();
 
             return (
-                title.toLowerCase().includes(lowerCaseQuery) ||
-                description.toLowerCase().includes(lowerCaseQuery) ||
-                status.toLowerCase().includes(lowerCaseQuery)
+                title?.toLowerCase().includes(lowerCaseQuery) ||
+                description?.toLowerCase().includes(lowerCaseQuery) ||
+                status?.toLowerCase().includes(lowerCaseQuery)
             );
         });
 
@@ -56,10 +58,11 @@ export const SearchVolLanding = () => {
             <SearchVolMain />
             <SearchVolForm
                 onSearch={handleSearch}
-                searchResults={data.users}
-                onChange={(page) => setCurrentPage((page) => page - 1)}
+                searchResults={searchResults}
+                onChange={(page) => setCurrentPage((nextPage) => page)}
                 current={currentPage}
                 total={data.pagination?.totalDocs}
+                userData={data.users}
             />
         </div>
     );
