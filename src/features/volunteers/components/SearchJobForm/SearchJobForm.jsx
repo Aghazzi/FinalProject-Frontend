@@ -3,12 +3,23 @@ import { Card } from "antd";
 import { Pagination } from "antd";
 import "./SearchJobForm.css";
 
-export const SearchJobForm = ({ onSearch, searchResults }) => {
+export const SearchJobForm = ({
+    onSearch,
+    searchResults = [],
+    current,
+    total,
+    onChange,
+    jobData,
+}) => {
     const [searchQuery, setSearchQuery] = useState("");
 
     const handleChange = (e) => {
         setSearchQuery(e.target.value);
         onSearch(e.target.value);
+    };
+
+    const handlePageChange = (page) => {
+        onChange(page);
     };
 
     return (
@@ -58,16 +69,14 @@ export const SearchJobForm = ({ onSearch, searchResults }) => {
                     textAlign: "flex-start",
                 }}
             >
-                {searchResults.map((result) => (
+                {jobData.map((data, index) => (
                     <Card
-                        key={result.id}
-                        title={result.title}
+                        key={index}
+                        title={data.title}
                         style={{
                             width: 300,
                             height: 300,
-                            textAlign: "center",
-                            display: "flex",
-                            flexDirection: "column",
+                            overflow: "hidden",
                         }}
                         hoverable
                     >
@@ -78,17 +87,91 @@ export const SearchJobForm = ({ onSearch, searchResults }) => {
                                 gap: "10px",
                             }}
                         >
-                            <p>{result.description}</p>
-                            <p>Status: {result.status}</p>
-                            <p>Start Date</p>
-                            <p>End Date</p>
-                            <p>Required Skills</p>
-                            <p>Schedule</p>
+                            <p
+                                style={{
+                                    overflow: "hidden",
+                                    textOverflow: "ellipsis",
+                                    whiteSpace: "nowrap",
+                                    margin: "0",
+                                }}
+                            >
+                                {data.description}
+                            </p>
+                            <p
+                                style={{
+                                    overflow: "hidden",
+                                    textOverflow: "ellipsis",
+                                    whiteSpace: "nowrap",
+                                    margin: "0",
+                                }}
+                            >
+                                Start Date: {data.startDate}
+                            </p>
+                            <p
+                                style={{
+                                    overflow: "hidden",
+                                    textOverflow: "ellipsis",
+                                    whiteSpace: "nowrap",
+                                    margin: "0",
+                                }}
+                            >
+                                End Date: {data.endDate}
+                            </p>
+                            <p
+                                style={{
+                                    overflow: "hidden",
+                                    textOverflow: "ellipsis",
+                                    whiteSpace: "nowrap",
+                                    margin: "0",
+                                }}
+                            >
+                                Required Skills: {data.requiredSkills}
+                            </p>
+                            <p
+                                style={{
+                                    overflow: "hidden",
+                                    textOverflow: "ellipsis",
+                                    whiteSpace: "nowrap",
+                                    margin: "0",
+                                }}
+                            >
+                                Schedule: {data.schedule}
+                            </p>
+                            <p
+                                style={{
+                                    overflow: "hidden",
+                                    textOverflow: "ellipsis",
+                                    whiteSpace: "nowrap",
+                                    margin: "0",
+                                }}
+                            >
+                                {" "}
+                                <b>
+                                    Status:{" "}
+                                    <span
+                                        style={{
+                                            color:
+                                                data.status === "open"
+                                                    ? "green"
+                                                    : "red",
+                                        }}
+                                    >
+                                        {data.status === "open"
+                                            ? "Open for applying"
+                                            : "Closed"}
+                                    </span>
+                                </b>
+                            </p>
                         </div>
                     </Card>
                 ))}
             </div>
-            <Pagination defaultCurrent={1} total={50} />
+            <Pagination
+                d
+                current={current}
+                total={total}
+                onChange={handlePageChange}
+            />
         </div>
     );
 };

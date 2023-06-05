@@ -75,13 +75,9 @@ export const SearchVolForm = ({
                         style={{
                             width: 300,
                             height: 300,
-                            textAlign: "center",
-                            justifyContent: "center",
-                            alignItems: "center",
-                            display: "flex",
-                            flexDirection: "column",
+                            overflow: "hidden",
                         }}
-                        hoverable
+                        hoverable={false}
                     >
                         <div
                             style={{
@@ -90,17 +86,67 @@ export const SearchVolForm = ({
                                 gap: "8px",
                             }}
                         >
-                            <p>Email: {data.email}</p>
-                            <p>Country: {data.country}</p>
-                            <p>City: {data.city}</p>
-                            <p>Interests: {data.interests}</p>
-                            <p>
+                            <p
+                                style={{
+                                    overflow: "hidden",
+                                    textOverflow: "ellipsis",
+                                    whiteSpace: "nowrap",
+                                    margin: "0",
+                                }}
+                            >
+                                Email: {data.email}
+                            </p>
+                            <p
+                                style={{
+                                    overflow: "hidden",
+                                    textOverflow: "ellipsis",
+                                    whiteSpace: "nowrap",
+                                    margin: "0",
+                                }}
+                            >
+                                Country: {data.country}
+                            </p>
+                            <p
+                                style={{
+                                    overflow: "hidden",
+                                    textOverflow: "ellipsis",
+                                    whiteSpace: "nowrap",
+                                    margin: "0",
+                                }}
+                            >
+                                City: {data.city}
+                            </p>
+                            <p
+                                style={{
+                                    overflow: "hidden",
+                                    textOverflow: "ellipsis",
+                                    whiteSpace: "nowrap",
+                                    margin: "0",
+                                }}
+                            >
+                                Interests: {data.interests}
+                            </p>
+                            <p
+                                style={{
+                                    overflow: "hidden",
+                                    textOverflow: "ellipsis",
+                                    whiteSpace: "nowrap",
+                                    margin: "0",
+                                }}
+                            >
                                 Jobs Applied:{" "}
                                 {data.appliedJobs.length
                                     ? data.appliedJobs[0].title
                                     : "None"}
                             </p>
-                            <p>
+                            <p
+                                style={{
+                                    overflow: "hidden",
+                                    textOverflow: "ellipsis",
+                                    whiteSpace: "nowrap",
+                                    margin: "0",
+                                }}
+                            >
                                 <b>
                                     Status:{" "}
                                     <span

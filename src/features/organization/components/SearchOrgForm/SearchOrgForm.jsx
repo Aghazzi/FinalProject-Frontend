@@ -75,11 +75,7 @@ export const SearchOrgForm = ({
                         style={{
                             width: 300,
                             height: 300,
-                            textAlign: "center",
-                            justifyContent: "center",
-                            alignItems: "center",
-                            display: "flex",
-                            flexDirection: "column",
+                            overflow: "hidden",
                         }}
                         hoverable
                     >
@@ -90,13 +86,74 @@ export const SearchOrgForm = ({
                                 gap: "8px",
                             }}
                         >
-                            <p>Email: {data.email}</p>
-                            <p>Country: {data.country}</p>
-                            <p>Support Name: {data.contactPersonName}</p>
-                            <p>Support Email: {data.contactPersonEmail}</p>
-                            <p>Support Phone: {data.contactPersonPhone}</p>
-                            <p>Projects Posted: {data.appliedJobs?.length}</p>
-                            <p>
+                            <p
+                                style={{
+                                    overflow: "hidden",
+                                    textOverflow: "ellipsis",
+                                    whiteSpace: "nowrap",
+                                    margin: "0",
+                                }}
+                            >
+                                Email: {data.email}
+                            </p>
+                            <p
+                                style={{
+                                    overflow: "hidden",
+                                    textOverflow: "ellipsis",
+                                    whiteSpace: "nowrap",
+                                    margin: "0",
+                                }}
+                            >
+                                Country: {data.country}
+                            </p>
+                            <p
+                                style={{
+                                    overflow: "hidden",
+                                    textOverflow: "ellipsis",
+                                    whiteSpace: "nowrap",
+                                    margin: "0",
+                                }}
+                            >
+                                Support Name: {data.contactPersonName}
+                            </p>
+                            <p
+                                style={{
+                                    overflow: "hidden",
+                                    textOverflow: "ellipsis",
+                                    whiteSpace: "nowrap",
+                                    margin: "0",
+                                }}
+                            >
+                                Support Email: {data.contactPersonEmail}
+                            </p>
+                            <p
+                                style={{
+                                    overflow: "hidden",
+                                    textOverflow: "ellipsis",
+                                    whiteSpace: "nowrap",
+                                    margin: "0",
+                                }}
+                            >
+                                Support Phone: {data.contactPersonPhone}
+                            </p>
+                            <p
+                                style={{
+                                    overflow: "hidden",
+                                    textOverflow: "ellipsis",
+                                    whiteSpace: "nowrap",
+                                    margin: "0",
+                                }}
+                            >
+                                Projects Posted: {data.appliedJobs?.length}
+                            </p>
+                            <p
+                                style={{
+                                    overflow: "hidden",
+                                    textOverflow: "ellipsis",
+                                    whiteSpace: "nowrap",
+                                    margin: "0",
+                                }}
+                            >
                                 <b>
                                     Status:{" "}
                                     <span

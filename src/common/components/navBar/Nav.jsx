@@ -9,6 +9,7 @@ import { QueryClient, useMutation } from "react-query";
 import { logoutApi } from "../../../features/auth/store/authApi";
 import { Loader } from "../Loader/Loader";
 import { useCookies } from "react-cookie";
+import Swal from "sweetalert2";
 
 export const Nav = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -31,6 +32,13 @@ export const Nav = () => {
             removeCookie("user");
             setIsLoggedIn(false);
             queryClient.invalidateQueries("logout");
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Logged Out Successfully!",
+                showConfirmButton: false,
+                timer: 1500,
+            });
         },
     });
 

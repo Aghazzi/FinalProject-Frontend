@@ -1,7 +1,9 @@
 import { apiInstance } from "../../../services";
 
-export const getJobs = async () => {
-    const response = await apiInstance.get("/job/jobs");
+export const getJobs = async (currentPage, limit) => {
+    const response = await apiInstance.get(
+        `/job/jobs?page=${currentPage}&limit=${limit}`
+    );
     return response.data;
 };
 

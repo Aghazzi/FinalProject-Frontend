@@ -8,6 +8,7 @@ import { loginApi } from "../store/authApi";
 import { Loader } from "../../../common/components/Loader/Loader";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
+import Swal from "sweetalert2";
 
 export const Signin = () => {
     const { user, setUser } = useContext(AuthContext);
@@ -28,12 +29,28 @@ export const Signin = () => {
             setCookie("user", data);
             queryClient.invalidateQueries("auth");
             navigate("/");
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Welcome Back!",
+                showConfirmButton: false,
+                timer: 1500,
+            });
         },
     });
 
     const onFinish = (values) => {
         mutateLogin(values);
     };
+
+    if (isError) {
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Something went wrong!",
+            footer: `${error.response.data.message}`,
+        });
+    }
 
     if (isLoading)
         return (
