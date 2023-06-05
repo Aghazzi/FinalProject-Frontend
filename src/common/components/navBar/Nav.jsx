@@ -18,6 +18,8 @@ export const Nav = () => {
     const { user, setUser } = useContext(AuthContext);
     const queryClient = new QueryClient();
     const [cookies, setCookie, removeCookie] = useCookies(["user"]);
+    const userRole = user?.role;
+    console.log(userRole);
 
     const {
         mutate: mutateLogout,
@@ -86,60 +88,66 @@ export const Nav = () => {
                                 Home
                             </Link>
                         </li>
-                        <li>
-                            <Link to="#">
-                                For Volunteers <AiOutlineDown />
-                                <i className="fas fa-caret-down"></i>
-                            </Link>
-                            <ul className="sub-menu">
-                                <li>
-                                    <Link
-                                        to="/search-jobs"
-                                        onClick={toggleMenu}
-                                    >
-                                        Search Projects
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link
-                                        to="/search-orgs"
-                                        onClick={toggleMenu}
-                                    >
-                                        Search Organizations
-                                        <i className="fas fa-caret-down"></i>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link
-                                        to="/profile-vol"
-                                        onClick={toggleMenu}
-                                    >
-                                        Profile
-                                    </Link>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <Link to="#">
-                                For Organizations <AiOutlineDown />
-                                <i className="fas fa-caret-down"></i>
-                            </Link>
-                            <ul className="sub-menu">
-                                <li>
-                                    <Link
-                                        to="/org-post-project"
-                                        onClick={toggleMenu}
-                                    >
-                                        Post a Project
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link to="/search-vol" onClick={toggleMenu}>
-                                        Search Volunteers
-                                        <i className="fas fa-caret-down"></i>
-                                    </Link>
-                                </li>
-                                {/* <li>
+                        {!isLoggedIn || (isLoggedIn && userRole !== "Org") ? (
+                            <li>
+                                <Link to="#">
+                                    For Volunteers <AiOutlineDown />
+                                    <i className="fas fa-caret-down"></i>
+                                </Link>
+                                <ul className="sub-menu">
+                                    <li>
+                                        <Link
+                                            to="/search-jobs"
+                                            onClick={toggleMenu}
+                                        >
+                                            Search Projects
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link
+                                            to="/search-orgs"
+                                            onClick={toggleMenu}
+                                        >
+                                            Search Organizations
+                                            <i className="fas fa-caret-down"></i>
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link
+                                            to="/profile-vol"
+                                            onClick={toggleMenu}
+                                        >
+                                            Profile
+                                        </Link>
+                                    </li>
+                                </ul>
+                            </li>
+                        ) : null}
+                        {!isLoggedIn || (isLoggedIn && userRole !== "User") ? (
+                            <li>
+                                <Link to="#">
+                                    For Organizations <AiOutlineDown />
+                                    <i className="fas fa-caret-down"></i>
+                                </Link>
+                                <ul className="sub-menu">
+                                    <li>
+                                        <Link
+                                            to="/org-post-project"
+                                            onClick={toggleMenu}
+                                        >
+                                            Post a Project
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link
+                                            to="/search-vol"
+                                            onClick={toggleMenu}
+                                        >
+                                            Search Volunteers
+                                            <i className="fas fa-caret-down"></i>
+                                        </Link>
+                                    </li>
+                                    {/* <li>
                                     <Link
                                         to="/profile-org"
                                         onClick={toggleMenu}
@@ -147,8 +155,9 @@ export const Nav = () => {
                                         Profile
                                     </Link>
                                 </li> */}
-                            </ul>
-                        </li>
+                                </ul>
+                            </li>
+                        ) : null}
                         {/* <li>
                             <Link to="#" onClick={toggleMenu}>
                                 How it Works
