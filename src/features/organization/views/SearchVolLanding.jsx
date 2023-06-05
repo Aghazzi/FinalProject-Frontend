@@ -4,10 +4,8 @@ import { SearchVolMain } from "../components/SearchVolMain/SearchVolMain";
 import { SearchVolForm } from "../components/SearchVolForm/SearchVolFrom";
 import { AuthContext } from "../../auth/store/Context/AuthProvider";
 import { QueryClient, useMutation, useQuery } from "react-query";
-import { useNavigate } from "react-router-dom";
-import { useCookies } from "react-cookie";
 import { getVols } from "../../auth/store/authApi";
-import { apiInstance } from "../../../services";
+import { Loader } from "../../../common/components";
 
 export const SearchVolLanding = () => {
     const [searchResults, setSearchResults] = useState([]);
@@ -41,13 +39,26 @@ export const SearchVolLanding = () => {
         setSearchResults(filteredResults);
     };
 
+    if (isLoading)
+        return (
+            <>
+                <div
+                    style={{
+                        width: "10%",
+                    }}
+                ></div>
+                <Loader />;
+            </>
+        );
+
     return (
         <div style={{ width: "100%" }}>
             <SearchVolMain />
             <SearchVolForm
                 onSearch={handleSearch}
                 searchResults={data.users}
-                current={data.pagination?.page}
+                onChange={(page) => setCurrentPage((page) => page - 1)}
+                current={currentPage}
                 total={data.pagination?.totalDocs}
             />
         </div>

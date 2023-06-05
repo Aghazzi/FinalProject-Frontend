@@ -47,7 +47,17 @@ export const Signup = () => {
         mutateRegister(updatedValues);
     };
 
-    if (isLoading) return <Loader />;
+    if (isLoading)
+        return (
+            <>
+                <div
+                    style={{
+                        width: "10%",
+                    }}
+                ></div>
+                <Loader />
+            </>
+        );
     return (
         <div
             className="SignupForm-vol"

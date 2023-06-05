@@ -40,7 +40,17 @@ export const SignupOrg = () => {
         navigate("/signin");
     };
 
-    if (isLoading) return <Loader />;
+    if (isLoading)
+        return (
+            <>
+                <div
+                    style={{
+                        width: "10%",
+                    }}
+                ></div>
+                <Loader />
+            </>
+        );
 
     return (
         <div

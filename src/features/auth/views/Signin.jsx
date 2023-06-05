@@ -35,7 +35,17 @@ export const Signin = () => {
         mutateLogin(values);
     };
 
-    if (isLoading) return <Loader />;
+    if (isLoading)
+        return (
+            <>
+                <div
+                    style={{
+                        width: "10%",
+                    }}
+                ></div>
+                <Loader />
+            </>
+        );
 
     return (
         <div
