@@ -22,8 +22,8 @@ export const SigninForm = ({ onFinish }) => {
                 maxWidth: 600,
             }}
             initialValues={{
-                email: "user@user.com",
-                password: "user12345",
+                // email: "user@user.com",
+                // password: "user12345",
                 remember: true,
             }}
             onFinish={onFinish}
