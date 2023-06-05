@@ -12,6 +12,7 @@ export const SearchJobEnding = () => {
     };
     return (
         <div
+            className="searchjob-container"
             style={{
                 display: "flex",
                 justifyContent: "center",
@@ -21,7 +22,7 @@ export const SearchJobEnding = () => {
                 background: "var(--accent3-color)",
             }}
         >
-            <button style={{ border: "none" }} onClick={handleSearchOrg}>
+            <button style={{ border: "none" }} onClick={handleSearchOrg} className="searchjob-main">
                 <Card
                     hoverable
                     style={{
