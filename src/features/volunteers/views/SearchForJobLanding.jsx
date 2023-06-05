@@ -56,6 +56,13 @@ export const SearchForJobLanding = () => {
     } = useMutation(applyJob, {
         onSuccess: () => {
             queryClient.invalidateQueries("jobs");
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Application sent!",
+                showConfirmButton: false,
+                timer: 1500,
+            });
         },
         onError: (err) => {
             console.log(err);
@@ -84,30 +91,28 @@ export const SearchForJobLanding = () => {
         setSearchResults(filteredResults);
     };
 
-    if (isLoading)
-        return (
-            <>
-                <div
-                    style={{
-                        width: "10%",
-                    }}
-                ></div>
-                <Loader />;
-            </>
-        );
-
     return (
         <div style={{ width: "100%" }}>
             <SearchJobMain />
-            <SearchJobForm
-                onSearch={handleSearch}
-                searchResults={searchResults}
-                onChange={(page) => setCurrentPage((nextPage) => page)}
-                current={currentPage}
-                total={data.pagination?.totalDocs}
-                jobData={data.jobs}
-                jobApply={handleApply}
-            />
+            {isLoading ? (
+                <div
+                    style={{
+                        width: "130%",
+                    }}
+                >
+                    <Loader />
+                </div>
+            ) : (
+                <SearchJobForm
+                    onSearch={handleSearch}
+                    searchResults={searchResults}
+                    onChange={(page) => setCurrentPage((nextPage) => page)}
+                    current={currentPage}
+                    total={data.pagination?.totalDocs}
+                    jobData={data.jobs}
+                    jobApply={handleApply}
+                />
+            )}
             <SearchJobEnding />
         </div>
     );

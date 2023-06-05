@@ -85,10 +85,11 @@ export const SearchJobForm = ({
                                 width: 300,
                                 height: 300,
                                 overflow: "hidden",
+                                textAlign: "start",
                             }}
                             hoverable
                         >
-                            <div
+                            <div className="searchform-body"
                                 style={{
                                     display: "flex",
                                     flexDirection: "column",
@@ -153,7 +154,6 @@ export const SearchJobForm = ({
                                         margin: "0",
                                     }}
                                 >
-                                    {" "}
                                     <b>
                                         Status:{" "}
                                         <span

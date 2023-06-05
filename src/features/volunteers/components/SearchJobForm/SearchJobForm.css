@@ -15,8 +15,14 @@
     .jobform-card .ant-card {
         display: flex !important;
         flex-direction: column !important;
+        justify-content: center !important;
+        overflow: visible !important;
         width: 300px !important;
         height: 300px !important;
+    }
+
+    .searchform-body{
+        width: 280px !important;
     }
     .jobform-main input {
         width: 210px !important;

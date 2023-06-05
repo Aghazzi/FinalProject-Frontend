@@ -84,6 +84,7 @@ export const SearchVolForm = ({
                                 display: "flex",
                                 flexDirection: "column",
                                 gap: "8px",
+                                width: "280px",
                             }}
                         >
                             <p
