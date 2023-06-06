@@ -49,18 +49,7 @@ export const Nav = () => {
         setIsLoggedIn(!!user || !!cookies.user);
     }, [user, cookies]);
 
-    const toggleMenu = (e) => {
-        if (!isLoggedIn) {
-            e.preventDefault();
-            navigate("/signin");
-            Swal.fire({
-                position: "center",
-                icon: "warning",
-                title: "Log in first, please!",
-                showConfirmButton: false,
-                timer: 1500,
-            });
-        }
+    const toggleMenu = () => {
         setIsActive(!isActive);
         setIsOpen(!isOpen);
     };
@@ -71,7 +60,7 @@ export const Nav = () => {
         setIsLoggedIn(false);
     };
 
-    const handleClickForVolunteers = (e) => {
+    const handleClickForNavigation = (e) => {
         if (!isLoggedIn) {
             e.preventDefault();
             navigate("/signin");
@@ -83,48 +72,8 @@ export const Nav = () => {
                 timer: 1500,
             });
         }
-    };
-
-    const handleClickForOrganizations = (e) => {
-        if (!isLoggedIn) {
-            e.preventDefault();
-            navigate("/signin");
-            Swal.fire({
-                position: "center",
-                icon: "warning",
-                title: "Log in first please!",
-                showConfirmButton: false,
-                timer: 1500,
-            });
-        }
-    };
-
-    const handleClickForVolunteersSearch = (e) => {
-        if (!isLoggedIn) {
-            e.preventDefault();
-            navigate("/signin");
-            Swal.fire({
-                position: "center",
-                icon: "warning",
-                title: "Log in first, please!",
-                showConfirmButton: false,
-                timer: 1500,
-            });
-        }
-    };
-
-    const handleClickForOrganizationsSearch = (e) => {
-        if (!isLoggedIn) {
-            e.preventDefault();
-            navigate("/signin");
-            Swal.fire({
-                position: "center",
-                icon: "warning",
-                title: "Log in first, please!",
-                showConfirmButton: false,
-                timer: 1500,
-            });
-        }
+        setIsActive(!isActive);
+        setIsOpen(!isOpen);
     };
 
     return (
@@ -155,7 +104,7 @@ export const Nav = () => {
                         </li>
                         {!isLoggedIn || (isLoggedIn && userRole !== "Org") ? (
                             <li>
-                                <Link to="#" onClick={handleClickForVolunteers}>
+                                <Link to="#" onClick={handleClickForNavigation}>
                                     For Volunteers <AiOutlineDown />
                                     <i className="fas fa-caret-down"></i>
                                 </Link>
@@ -163,7 +112,7 @@ export const Nav = () => {
                                     <li>
                                         <Link
                                             to="/search-jobs"
-                                            onClick={toggleMenu}
+                                            onClick={handleClickForNavigation}
                                         >
                                             Search Projects
                                         </Link>
@@ -171,7 +120,7 @@ export const Nav = () => {
                                     <li>
                                         <Link
                                             to="/search-orgs"
-                                            onClick={toggleMenu}
+                                            onClick={handleClickForNavigation}
                                         >
                                             Search Organizations
                                             <i className="fas fa-caret-down"></i>
@@ -180,7 +129,7 @@ export const Nav = () => {
                                     <li>
                                         <Link
                                             to="/profile-vol"
-                                            onClick={toggleMenu}
+                                            onClick={handleClickForNavigation}
                                         >
                                             Profile
                                         </Link>
@@ -190,10 +139,7 @@ export const Nav = () => {
                         ) : null}
                         {!isLoggedIn || (isLoggedIn && userRole !== "User") ? (
                             <li>
-                                <Link
-                                    to="#"
-                                    onClick={handleClickForOrganizations}
-                                >
+                                <Link to="#" onClick={handleClickForNavigation}>
                                     For Organizations <AiOutlineDown />
                                     <i className="fas fa-caret-down"></i>
                                 </Link>
@@ -201,7 +147,7 @@ export const Nav = () => {
                                     <li>
                                         <Link
                                             to="/org-post-project"
-                                            onClick={toggleMenu}
+                                            onClick={handleClickForNavigation}
                                         >
                                             Post a Project
                                         </Link>
@@ -209,7 +155,7 @@ export const Nav = () => {
                                     <li>
                                         <Link
                                             to="/search-vol"
-                                            onClick={toggleMenu}
+                                            onClick={handleClickForNavigation}
                                         >
                                             Search Volunteers
                                             <i className="fas fa-caret-down"></i>
