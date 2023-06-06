@@ -61,9 +61,10 @@ export const Nav = () => {
     };
 
     const handleClickForNavigation = (e) => {
+        e.preventDefault();
         if (!isLoggedIn) {
-            e.preventDefault();
-            navigate("/signin");
+            toggleMenu(); // Update the isActive state after a short delay
+            navigate("/signin"); // Navigate to the desired page
             Swal.fire({
                 position: "center",
                 icon: "warning",
@@ -72,8 +73,6 @@ export const Nav = () => {
                 timer: 1500,
             });
         }
-        setIsActive(!isActive);
-        setIsOpen(!isOpen);
     };
 
     return (
@@ -104,7 +103,10 @@ export const Nav = () => {
                         </li>
                         {!isLoggedIn || (isLoggedIn && userRole !== "Org") ? (
                             <li>
-                                <Link to="#" onClick={handleClickForNavigation}>
+                                <Link
+                                    to="#"
+                                    onClick={(e) => handleClickForNavigation(e)}
+                                >
                                     For Volunteers <AiOutlineDown />
                                     <i className="fas fa-caret-down"></i>
                                 </Link>
@@ -112,7 +114,9 @@ export const Nav = () => {
                                     <li>
                                         <Link
                                             to="/search-jobs"
-                                            onClick={handleClickForNavigation}
+                                            onClick={() =>
+                                                handleClickForNavigation()
+                                            }
                                         >
                                             Search Projects
                                         </Link>
@@ -120,7 +124,9 @@ export const Nav = () => {
                                     <li>
                                         <Link
                                             to="/search-orgs"
-                                            onClick={handleClickForNavigation}
+                                            onClick={() =>
+                                                handleClickForNavigation()
+                                            }
                                         >
                                             Search Organizations
                                             <i className="fas fa-caret-down"></i>
@@ -129,7 +135,9 @@ export const Nav = () => {
                                     <li>
                                         <Link
                                             to="/profile-vol"
-                                            onClick={handleClickForNavigation}
+                                            onClick={() =>
+                                                handleClickForNavigation()
+                                            }
                                         >
                                             Profile
                                         </Link>
@@ -139,7 +147,10 @@ export const Nav = () => {
                         ) : null}
                         {!isLoggedIn || (isLoggedIn && userRole !== "User") ? (
                             <li>
-                                <Link to="#" onClick={handleClickForNavigation}>
+                                <Link
+                                    to="#"
+                                    onClick={(e) => handleClickForNavigation(e)}
+                                >
                                     For Organizations <AiOutlineDown />
                                     <i className="fas fa-caret-down"></i>
                                 </Link>
@@ -147,7 +158,9 @@ export const Nav = () => {
                                     <li>
                                         <Link
                                             to="/org-post-project"
-                                            onClick={handleClickForNavigation}
+                                            onClick={() =>
+                                                handleClickForNavigation()
+                                            }
                                         >
                                             Post a Project
                                         </Link>
@@ -155,7 +168,9 @@ export const Nav = () => {
                                     <li>
                                         <Link
                                             to="/search-vol"
-                                            onClick={handleClickForNavigation}
+                                            onClick={() =>
+                                                handleClickForNavigation()
+                                            }
                                         >
                                             Search Volunteers
                                             <i className="fas fa-caret-down"></i>
