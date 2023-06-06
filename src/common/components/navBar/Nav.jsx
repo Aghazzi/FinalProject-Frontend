@@ -2,7 +2,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./Nav.css";
 import { AiOutlineBars, AiOutlineDown, AiOutlineClose } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Logo from "../../../images/Tatawu3-02.png";
 import { AuthContext } from "../../../features/auth/store/Context/AuthProvider";
 import { QueryClient, useMutation } from "react-query";
@@ -19,6 +19,8 @@ export const Nav = () => {
     const queryClient = new QueryClient();
     const [cookies, setCookie, removeCookie] = useCookies(["user"]);
     const userRole = user?.role;
+    const navigate = useNavigate();
+    const location = useLocation();
 
     const {
         mutate: mutateLogout,
@@ -47,7 +49,18 @@ export const Nav = () => {
         setIsLoggedIn(!!user || !!cookies.user);
     }, [user, cookies]);
 
-    const toggleMenu = () => {
+    const toggleMenu = (e) => {
+        if (!isLoggedIn) {
+            e.preventDefault();
+            navigate("/signin");
+            Swal.fire({
+                position: "center",
+                icon: "warning",
+                title: "Log in first, please!",
+                showConfirmButton: false,
+                timer: 1500,
+            });
+        }
         setIsActive(!isActive);
         setIsOpen(!isOpen);
     };
@@ -58,7 +71,61 @@ export const Nav = () => {
         setIsLoggedIn(false);
     };
 
-    // if (isLoading) return <Loader />;
+    const handleClickForVolunteers = (e) => {
+        if (!isLoggedIn) {
+            e.preventDefault();
+            navigate("/signin");
+            Swal.fire({
+                position: "center",
+                icon: "warning",
+                title: "Log in first please!",
+                showConfirmButton: false,
+                timer: 1500,
+            });
+        }
+    };
+
+    const handleClickForOrganizations = (e) => {
+        if (!isLoggedIn) {
+            e.preventDefault();
+            navigate("/signin");
+            Swal.fire({
+                position: "center",
+                icon: "warning",
+                title: "Log in first please!",
+                showConfirmButton: false,
+                timer: 1500,
+            });
+        }
+    };
+
+    const handleClickForVolunteersSearch = (e) => {
+        if (!isLoggedIn) {
+            e.preventDefault();
+            navigate("/signin");
+            Swal.fire({
+                position: "center",
+                icon: "warning",
+                title: "Log in first, please!",
+                showConfirmButton: false,
+                timer: 1500,
+            });
+        }
+    };
+
+    const handleClickForOrganizationsSearch = (e) => {
+        if (!isLoggedIn) {
+            e.preventDefault();
+            navigate("/signin");
+            Swal.fire({
+                position: "center",
+                icon: "warning",
+                title: "Log in first, please!",
+                showConfirmButton: false,
+                timer: 1500,
+            });
+        }
+    };
 
     return (
         <header>
@@ -88,7 +155,7 @@ export const Nav = () => {
                         </li>
                         {!isLoggedIn || (isLoggedIn && userRole !== "Org") ? (
                             <li>
-                                <Link to="#">
+                                <Link to="#" onClick={handleClickForVolunteers}>
                                     For Volunteers <AiOutlineDown />
                                     <i className="fas fa-caret-down"></i>
                                 </Link>
@@ -123,7 +190,10 @@ export const Nav = () => {
                         ) : null}
                         {!isLoggedIn || (isLoggedIn && userRole !== "User") ? (
                             <li>
-                                <Link to="#">
+                                <Link
+                                    to="#"
+                                    onClick={handleClickForOrganizations}
+                                >
                                     For Organizations <AiOutlineDown />
                                     <i className="fas fa-caret-down"></i>
                                 </Link>
@@ -145,22 +215,9 @@ export const Nav = () => {
                                             <i className="fas fa-caret-down"></i>
                                         </Link>
                                     </li>
-                                    {/* <li>
-                                    <Link
-                                        to="/profile-org"
-                                        onClick={toggleMenu}
-                                    >
-                                        Profile
-                                    </Link>
-                                </li> */}
                                 </ul>
                             </li>
                         ) : null}
-                        {/* <li>
-                            <Link to="#" onClick={toggleMenu}>
-                                How it Works
-                            </Link>
-                        </li> */}
                         <li>
                             <a href="/#contactform" onClick={toggleMenu}>
                                 Contact
